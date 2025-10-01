@@ -1,374 +1,502 @@
-# PARADOX (PRDX) — User Documentation
+# PARADOX (PRDX) — Full Protocol Documentation
 
-## 1. Introduction
+## 1. Introduction to the Philosophy of PARADOX
 
-**PARADOX (PRDX)** is a financial instrument on the TON blockchain, created as an alternative to traditional monetary systems. Unlike inflationary fiat currencies, volatile cryptocurrencies, and fiat-pegged stablecoins, PARADOX implements the concept of _ideal speculative money_ with mathematically regulated pricing.
+### 1.1. The Essence of PARADOX: A Financial Instrument with Predictable Mathematics
 
-### Key Principles
+**PRDX: Risk That Works for Everyone**
 
-1. **Mathematical Pricing**
-   - The price of PRDX is determined by an objective formula linking the number of tokens to reserves
-   - Excludes the influence of subjective factors of supply and demand
+PARADOX is a fundamentally new type of financial instrument, whose value is determined not by market emotions or decisions of central authorities, but by strict mathematical laws.
 
-2. **Full Reserve Backing**
-   - Each PRDX token is backed by real assets (TON)
-   - Digital analog of the gold standard
+**What is the paradox?** The project's name reflects its very essence: creating a sustainable financial system through managed risk. In traditional economics, risk is considered a negative factor that is minimized. In PARADOX, risk becomes a constructive force — it is through the mechanism of managed risk that the system creates value for all participants.
 
-3. **Controlled Deflation**
-   - Uses mathematically verified probabilistic processes
-   - Creates predictable deflationary pressure
+Imagine a financial instrument that:
 
-### Basic Operations
+-   Has a transparent pricing formula instead of market speculation uncertainty
+-   Obeys clear mathematical rules instead of hidden mechanisms
+-   Turns individual risk into collective benefit
+-   Gradually increases its value due to a built-in deflationary mechanism
 
-| Operation | Description | Mechanism |
-|-----------|-------------|-----------|
-| **Mint** | Minting PRDX tokens for TON | Sent TON are reserved in the protocol, new PRDX are issued (minted) and transferred to the user |
-| **Burn** | Burning PRDX tokens for TON | Sent PRDX are permanently destroyed (burned), TON are returned to the user from the reserve |
-| **Mine** | Mining tokens through a probabilistic mechanism | Sent PRDX are burned, the result is determined by a probabilistic model and minted as new PRDX tokens |
+PARADOX is an experiment in creating the ideal financial instrument, where the unpredictability of traditional markets is replaced by mathematical certainty. A system where all rules are open, verifiable, and work for the benefit of every participant.
 
-### Mathematical Foundation
+### 1.2. Core Principles of the System
 
-The system is based on the [St. Petersburg Paradox](https://ru.wikipedia.org/wiki/Санкт-петербургский_парадокс) — an 18th-century model described by Daniel Bernoulli. This model allows transforming individual participant risk into collective benefit through gradual reduction of the total number of tokens.
+**Mathematical Pricing**
+The value of PRDX is calculated using an objective formula that links the number of tokens to TON reserves. This eliminates the influence of subjective factors and creates a predictable economic environment.
 
-## 2. Mathematical Foundations of the System
+**Full Reserve Backing**
+Each PRDX token is 100% backed by TON stored in the protocol's smart contract. This is a digital analog of the gold standard, ensuring the fundamental value of the asset.
 
-### Basic Parameters
+**Controlled Deflation**
+The system uses mathematically verified probabilistic processes to create constant deflationary pressure. This means that the total amount of PRDX in circulation gradually decreases, which, all else being equal, leads to an increase in the value of each token.
 
-| Variable | Description | Value |
-|----------|-------------|-------|
-| $R$ | Total TON reserve in the protocol | Dynamic |
-| $S$ | Total PRDX supply in circulation | Dynamic |
-| $\phi_{mint}$ | Mint operation fee | 0.78% |
-| $\phi_{burn}$ | Burn operation fee | 1.56% |
-| $EV_{mine}$ | Expected value of the Mine operation | -12.5% |
+### 1.3. Roles of System Participants
 
-### Pricing Formulas
+👩 **Alice — Conservative Investor**
+Alice acquires PRDX through the Mint operation and holds them as a long-term investment. Her strategy is based on faith in the system's fundamental principles and the expectation of value growth due to the deflationary mechanism.
 
-**Base PRDX to TON Rate:**
-$$K_{base} = \frac{S}{R}$$
+👨 **Bob — Active Participant**
+Bob uses the Mine operation to potentially increase his amount of PRDX. He consciously accepts calculated risk, understanding the probabilistic nature of the operation and its mathematical expectation.
 
-**Mint Rate:**
-$$K_{mint} = \frac{S}{R} \times (1 - \phi_{mint})$$
+## 2. Mathematical Foundations of PARADOX
 
-**Burn Rate:**
-$$K_{burn} = \frac{R}{S} \times (1 - \phi_{burn})$$
+### 2.1. Basic System Parameters
 
-### Operation Formulas
+| Parameter     | Value    | Description                                   |
+| ------------- | -------- | --------------------------------------------- |
+| $\phi_{mint}$ | 0.015625 | Mint operation fee (1.5625%)                  |
+| $\phi_{burn}$ | 0.015625 | Burn operation fee (1.5625%)                  |
+| $EV_{mine}$   | -0.125   | Mathematical expectation of Mine operation (-12.5%) |
+| $L_{mine}$    | 0.125    | Mining limit (12.5% of emission)              |
 
-#### Mint (Token Minting)
-$PRDX_{received} = TON_{sent} \times \frac{S}{R} \times (1 - \phi_{mint})$
+**Parameter Motivation:** These values ensure a balance between incentivizing participation in the system and maintaining its long-term stability. The negative mathematical expectation of Mine creates deflationary pressure, while the limit protects against excessive influence from individual operations.
 
-#### Burn (Token Burning)
-$TON_{received} = PRDX_{sent} \times \frac{R}{S} \times (1 - \phi_{burn})$
+### 2.2. Dynamic Variables
 
-#### Mine (Token Mining)
+-   $R$ — total TON reserve in the protocol
+-   $S$ — total PRDX emission in circulation
+-   $P_{base}$ — base PRDX to TON rate
 
-**Minimum Reward:**
-$$PRDX_{min} = \frac{2 \times PRDX_{stake} \times (1 - EV_{mine})}{outcomes + 1}$$
+### 2.3. Pricing Formulas
 
-**Reward for Outcome $i$:**
-$$PRDX_{reward}(i) = PRDX_{min} \times 2^{i-1}$$
+**Base Rate:**
 
-**Probability of Outcome $i$:**
-$$P(i) = \begin{cases}
-\frac{1}{2^i} & \text{for } i = 1, 2, \ldots, outcomes-1 \\
-\frac{1}{2^{outcomes-1}} & \text{for } i = outcomes
-\end{cases}$$
+$$
+P_{base} = \frac{S}{R}
+$$
 
-**Expected Value:**
-$$E[reward] = PRDX_{stake} \times (1 - EV_{mine})$$
+**Rate for Mint Operation:**
 
-## 3. Quick Start
+$$
+P_{mint} = \frac{S}{R} \times (1 - \phi_{mint})
+$$
 
-### Connection
+**Rate for Burn Operation:**
 
-1. Launch the [PrdxCoin Bot](https://t.me/PrdxCoinBot) in Telegram
-2. Click **Connect** to connect your TON wallet
-3. Ensure you have sufficient TON for operations
-4. Start with small amounts to master the system
+$$
+P_{burn} = \frac{R}{S} \times (1 - \phi_{burn})
+$$
 
-> ⚠️ **Warning:** PARADOX is deployed on the TON testnet. Use a test wallet.
+**Important Nuance:** During the Mint operation, the fee is charged in TON and does not enter the protocol reserve. During the Burn operation, the fee is charged in PRDX and remains in the system. This means that the base rate $P_{base}$ does not change when performing Mint and Burn operations.
 
-### Security Guarantees
+### 2.4. Operation Formulas
 
-- **Full Backing:** PRDX are 100% backed by TON reserves
-- **Resilience:** Stability during periods of market turbulence
-- **Transparency:** All operations are mathematically defined and verifiable
+#### Mint Operation
 
-## 4. Operations Guide
+$$
+PRDX_{received} = TON_{sent} \times \frac{S}{R} \times (1 - \phi_{mint})
+$$
 
-### 4.1 Mint — Token Minting
+#### Burn Operation
 
-**Mint Operation** — the process of obtaining PRDX tokens in exchange for TON. When you send TON to the protocol, these funds are reserved in the system, and in return, new PRDX tokens are issued (minted) to you at a mathematically determined rate.
+$$
+TON_{received} = PRDX_{sent} \times \frac{R}{S} \times (1 - \phi_{burn})
+$$
 
-The key feature of the operation is that it occurs without the influence of speculative market factors — the rate is determined solely by the current ratio of reserves to supply in the system.
+## 3. Mine Operation and the St. Petersburg Paradox
 
-#### Procedure
+### 3.1. Historical Basis: St. Petersburg Paradox and Daniel Bernoulli
 
-1. Select the **"Mint"** function on the main screen
-2. Specify the amount of TON to convert or the desired amount of PRDX
-3. Check the fee calculation
-4. Confirm the operation
+**Daniel Bernoulli** — Swiss mathematician and physicist who, in 1738, while working at the Imperial Academy of Sciences in St. Petersburg, formulated one of the most famous paradoxes in probability theory. It was during this period of his career that Bernoulli laid the foundations for utility theory and subjective risk assessment, which are still used in economics and finance.
 
-#### Mint Operation Example
+**What is the paradox?**
 
-**Initial State:**
-- Reserve: 100 TON
-- Supply: 100,000 PRDX
-- Mint Rate: 992.2 PRDX/TON
+The classic formulation of the St. Petersburg paradox describes a hypothetical lottery:
 
-**Operation:** Sending 10 TON → receiving PRDX
+-   The organizer flips a coin until tails comes up
+-   If tails on the first flip — player gets 2 coins
+-   If on the second — 4 coins
+-   If on the third — 8 coins
+-   And so on: on the nth flip, the player gets $2^n$ coins
 
-**Result:**
-| Parameter | Before | After |
-|-----------|--------|-------|
-| TON Reserve | 100 | 110 |
-| PRDX Supply | 100,000 | 109,922 |
-| Received PRDX | — | 9,922 |
-| Rate (PRDX/TON) | 1,000 | 999.3 |
+**Mathematical expectation of winnings** in such a lottery is infinite:
 
-> **Feature:** The Mint operation minimally affects the rate, creating a stable environment for all participants.
+$$
+E = \frac{1}{2} \times 2 + \frac{1}{4} \times 4 + \frac{1}{8} \times 8 + \ldots = 1 + 1 + 1 + \ldots = \infty
+$$
 
-### 4.2 Burn — Token Burning
+However, in practice, rational people are willing to pay only a very small amount for participation in such a lottery (usually no more than 20-30 coins). This contradiction between infinite mathematical expectation and modest real value constitutes the essence of the paradox.
 
-**Burn Operation** — the process of obtaining TON in exchange for PRDX. When you send PRDX tokens to the protocol, they are permanently destroyed (burned), and in return, TON are returned to you from the system's reserve.
+Bernoulli resolved this paradox by introducing the concept of **marginal utility** — the idea that an additional coin has different value for a rich and a poor person. This revolutionary idea for its time laid the foundation for modern economic theory and decision-making theory under uncertainty.
 
-This operation ensures full liquidity of PRDX tokens — you can obtain TON at a mathematically determined rate at any time, which fundamentally reduces liquidity risk.
+### 3.2. Adaptation of the Paradox in PARADOX: From Theory to Practice
 
-#### Procedure
+The PARADOX protocol is based on not the classic, but the **finite version** of the St. Petersburg paradox, which includes two key modifications:
 
-1. Select the **"Burn"** function on the main screen
-2. Specify the amount of PRDX to convert or the desired amount of TON
-3. Check the fee calculation
-4. Confirm the operation
+1. **Negative mathematical expectation** $EV_{mine} = -12.5\%$
+2. **Limit on maximum winnings** $L_{mine} = 12.5\%$ of PRDX emission
 
-#### Burn Operation Example
+**Why these parameters?**
 
-**Initial State:**
-- Reserve: 100 TON
-- Supply: 100,000 PRDX
-- Burn Rate: 0.000984 TON/PRDX
+The negative mathematical expectation turns the Mine operation from a purely speculative tool into a mechanism for creating collective value. Each Mine participant consciously accepts calculated risk, and their "losses" on average become a gain for the entire system through the creation of deflationary pressure.
 
-**Operation:** Sending 10,000 PRDX → receiving TON
+**Importance of Mining Limit**
 
-**Result:**
-| Parameter | Before | After |
-|-----------|--------|-------|
-| TON Reserve | 100 | 90.16 |
-| PRDX Supply | 100,000 | 90,000 |
-| Received TON | — | 9.84 |
-| Rate (PRDX/TON) | 1,000 | 998.2 |
+The maximum winnings limit $L_{mine} = 12.5\% \times S$ is critically important for the system's sustainability. It guarantees that:
 
-> **Liquidity Guarantee:** The ability to exchange PRDX for TON at a mathematically determined rate at any time.
+-   No single Mine operation can have a destructive impact on the protocol's economy
+-   The maximum potential decrease in the PRDX rate at any time is known and limited
+-   The system is protected from manipulations and excessive influence by large participants
 
-### 4.3 Mine — Token Mining
+**Due to this limit, there is a maximum possible "drawdown" in the rate at any time, and this value is known and controlled.** Without this limit, a theoretically possible large win in one Mine operation could instantly increase emission by a significant amount, leading to a sharp drop in the rate. In PARADOX, such a scenario is excluded — the system guarantees that no operation can increase emission by more than 12.5% of the current total supply.
 
-**Mine Operation** — a unique probabilistic mechanism where you send a certain amount of PRDX and receive a random amount of new PRDX tokens in return. The sent tokens are permanently burned, and the operation's result is determined by a strict mathematical model and minted as new PRDX tokens.
+This makes PARADOX a predictable and sustainable system, where even in the worst case, the impact on the economy is limited and mathematically calculated.
 
-This is not ordinary speculation — the system is built so that the individual risk of each participant is transformed into collective benefit for all token holders through the creation of deflationary pressure.
+### 3.3. Mathematical Model of the Mine Operation
 
-#### Mining Concept
+#### Basic Parameters:
 
-PRDX mining represents a **controlled probabilistic operation** with the following characteristics:
+-   $PRDX_{deposit}$ — amount of PRDX transferred for participation in the operation
+-   $n$ — number of possible outcomes (from 2 to 32)
+-   $EV_{mine} = -0.125$ — mathematical expectation
 
-- **Mechanism:** Send a certain amount of PRDX → receive a random amount of new PRDX
-- **Burning:** All sent tokens are permanently destroyed regardless of the result
-- **Result Minting:** Won tokens are created anew according to a strict mathematical model
-- **Deflationary Effect:** The system creates constant pressure to reduce the total number of tokens
-- **Collective Benefit:** Individual miners' risks are transformed into benefit for all token holders
+#### Minimum Reward Calculation:
 
-#### Technical Process
+$$
+reward_{min} = \frac{2 \times PRDX_{deposit} \times (1 + EV_{mine})}{n + 1}
+$$
 
-A three-stage procedure to ensure cryptographic security:
+#### Reward for Outcome $i$ (where $i = 1, 2, \ldots, n$):
 
-| Stage | Name | Description |
-|-------|------|-------------|
-| 1 | **Mine Commit** | User generates a random number and sends its hash |
-| 2 | **Mine Process** | Smart contract requests a random number from the oracle |
-| 3 | **Mine Resolve** | User reveals their number and the outcome is determined |
+$$
+reward(i) = reward_{min} \times 2^{i-1}
+$$
 
-**Final Outcome Formula:**
-$$final\_seed = oracle\_seed \oplus user\_seed$$
+#### Outcome Probabilities:
 
-Outcome number = number of consecutive ones from the end of the binary representation of $final\_seed$ + 1.
+$$
+P(i) = \begin{cases}
+\frac{1}{2^i} & \text{for } i = 1, 2, \ldots, n-1 \\
+\frac{1}{2^{n-1}} & \text{for } i = n
+\end{cases}
+$$
 
-#### Mining Limitations
+#### Mathematical Expectation:
 
-**Mine Limit** to maintain system stability:
-$$PRDX_{min} \times 2^{outcomes-1} \leq 0.125 \times S$$
+$$
+E[reward] = \sum_{i=1}^{n} P(i) \times reward(i) = PRDX_{deposit} \times (1 + EV_{mine})
+$$
 
-The maximum win cannot exceed 12.5% of the total PRDX supply.
+#### Mine Operation Limit:
 
-#### Practical Examples
+$$
+reward_{max} = reward_{min} \times 2^{n-1} \leq L_{mine} \times S
+$$
 
-##### Example 1: Mining with 3 Outcomes
+This limit ensures that the maximum win in one Mine operation cannot exceed 12.5% of the total PRDX emission, protecting the system from excessive influence by individual participants.
+
+### 3.4. Practical Examples of Mine Operation
+
+#### Example 1: Conservative Strategy ($n = 3$)
 
 **Conditions:**
-- Reserve: 1,000 TON
-- Supply: 1,000 PRDX
-- Stake: 32 PRDX
 
-**Minimum Reward:**
-$$PRDX_{min} = \frac{2 \times 32 \times 0.875}{4} = 14 \text{ PRDX}$$
+-   $PRDX_{deposit} = 32$ PRDX
+-   $n = 3$
+-   $EV_{mine} = -0.125$
+
+**Calculations:**
+
+$$
+reward_{min} = \frac{2 \times 32 \times (1 + (-0.125))}{3 + 1} = \frac{2 \times 32 \times 0.875}{4} = 14
+$$
 
 **Possible Outcomes:**
-| Outcome | Reward | Probability | Percent |
-|---------|--------|-------------|---------|
-| 1 | 14 PRDX | 1/2 | 50% |
-| 2 | 28 PRDX | 1/4 | 25% |
-| 3 | 56 PRDX | 1/4 | 25% |
 
-**Expected Value:** 28 PRDX
+| Outcome $i$ | Reward                      | Probability   |
+| ----------- | --------------------------- | ------------- |
+| 1           | $14 \times 2^{0} = 14$ PRDX | $\frac{1}{2}$ |
+| 2           | $14 \times 2^{1} = 28$ PRDX | $\frac{1}{4}$ |
+| 3           | $14 \times 2^{2} = 56$ PRDX | $\frac{1}{4}$ |
 
-##### Example 2: Mining with 6 Outcomes
+**Mathematical Expectation:**
+
+$$
+E[reward] = 32 \times (1 - 0.125) = 28 \text{ PRDX}
+$$
+
+#### Example 2: Aggressive Strategy ($n = 6$)
 
 **Conditions:**
-- Reserve: 1,000 TON
-- Supply: 1,000 PRDX
-- Stake: 16 PRDX
 
-**Minimum Reward:**
-$$PRDX_{min} = \frac{2 \times 16 \times 0.875}{7} = 4 \text{ PRDX}$$
+-   $deposit = 16$ PRDX
+-   $n = 6$
+-   $EV_{mine} = -0.125$
+
+**Calculations:**
+
+$$
+reward_{min} = \frac{2 \times 16 \times 0.875}{6 + 1} = 4 \text{ PRDX}
+$$
 
 **Possible Outcomes:**
-| Outcome | Reward | Probability | Percent |
-|---------|--------|-------------|---------|
-| 1 | 4 PRDX | 1/2 | 50.000% |
-| 2 | 8 PRDX | 1/4 | 25.000% |
-| 3 | 16 PRDX | 1/8 | 12.500% |
-| 4 | 32 PRDX | 1/16 | 6.250% |
-| 5 | 64 PRDX | 1/32 | 3.125% |
-| 6 | 128 PRDX | 1/32 | 3.125% |
 
-**Expected Value:** 14 PRDX
+| Outcome $i$ | Reward                       | Probability    |
+| ----------- | ---------------------------- | -------------- |
+| 1           | $4 \times 2^{0} = 4$ PRDX    | $\frac{1}{2}$  |
+| 2           | $4 \times 2^{1} = 8$ PRDX    | $\frac{1}{4}$  |
+| 3           | $4 \times 2^{2} = 16$ PRDX   | $\frac{1}{8}$  |
+| 4           | $4 \times 2^{3} = 32$ PRDX   | $\frac{1}{16}$ |
+| 5           | $4 \times 2^{4} = 64$ PRDX   | $\frac{1}{32}$ |
+| 6           | $4 \times 2^{5} = 128$ PRDX  | $\frac{1}{32}$ |
 
-> **Key Feature:** In any outcome, the total amount of PRDX in the system decreases on average by 12.5%, creating deflationary pressure.
+**Mathematical Expectation:**
 
-## 5. Participation Strategies
+$$
+E[reward] = 16 \times 0.875 = 14 \text{ PRDX}
+$$
 
-### 5.1 Miner Strategy
+## 4. Why is the System Sustainable and Beneficial for Everyone?
 
-**Profile:** Active users willing to take higher risk.
+### 4.1. Main Sustainability Mechanism
 
-**Characteristics:**
-- Potential for exponential asset growth
-- High risk level
-- Flexible parameter settings
-- Support for protocol functioning
+The PARADOX protocol is designed so that the Mine operation brings its participant a loss on average. The current value of this parameter is $-12.5\%$ of the amount of PRDX participating in mining. This negative mathematical expectation guarantees that in the long term, the total amount of PRDX will gradually decrease.
 
-**Recommendations:**
-- Start with small stakes
-- Vary the number of outcomes based on risk tolerance
-- Consider mining as part of a diversified strategy
+With a fixed TON reserve, a decrease in the amount of PRDX leads to a natural increase in the rate. This fundamental economic principle underlies the system's sustainability.
 
-### 5.2 Holder Strategy
+### 4.2. Benefits for Different Types of Participants
 
-**Profile:** Passive investors focused on long-term growth.
+**For Alice 👩 (less risk-averse):**
+The value of her PRDX tokens will increase due to the deflationary pressure created by Mine operation participants. Alice receives passive benefits from the system's operation without taking additional risks.
 
-**Characteristics:**
-- Passive benefit from deflationary effect
-- Low-medium risk level
-- Long-term time horizon
-- Minimal involvement after purchase
+**For Bob 👨 (more risk-averse):**
+Participation in the Mine operation provides an opportunity to multiply his tokens multiple times according to open and transparent rules. Although the mathematical expectation of the operation is negative, each individual run can bring significant winnings, creating an incentive for participation.
 
-**Recommendations:**
-- View PRDX as a long-term investment
-- Use cost averaging strategy
-- Monitor mining activity in the system
+### 4.3. Network Effect
 
-### 5.3 Ecosystem Interaction
+The more participants like Alice and Bob in the system, the more accurately the system works — the value of PRDX grows more and deviates less from the ideal. Each new participant enhances the reliability and efficiency of the protocol for everyone.
 
-The uniqueness of PARADOX lies in the symbiotic relationships between miners and holders:
+Positive feedback mechanism:
 
-1. Miners create deflation → reduction in supply
-2. Reduction in supply → increase in PRDX value
-3. Value increase → benefit to holders and attraction of new miners
-4. Holders provide system stability and liquidity
+1. Growth in the number of participants increases Mine operation activity
+2. Increased Mine activity strengthens deflationary pressure
+3. Strengthened deflationary pressure leads to growth in PRDX value
+4. Value growth attracts new participants
 
-## 6. Frequently Asked Questions
+## 5. Practical Guide to Operations
 
-### General Questions
+### 5.1. Mint Operation — Acquiring PRDX
 
-**What is the difference between PRDX and stablecoins?**
+**Economic Essence:** Conversion of TON into PRDX tokens at a rate determined by the current state of the protocol reserves.
 
-| Aspect | Stablecoins | PRDX |
-|--------|-------------|------|
-| Goal | Fixed value | Controlled growth |
-| Mechanism | Peg to fiat | Mathematical pricing |
-| Nature | Static | Deflationary |
-| Backing | Fiat reserves | Full crypto backing |
+**Step-by-Step Process:**
 
-**What risks exist?**
-- **Mining:** Negative expected value (-12.5%)
-- **Technological:** Dependence on TON blockchain
-- **Liquidation:** Minimal due to Burn mechanism
-- **Market:** Eliminated by mathematical pricing
+1. Select "Mint" operation in the interface
+2. Specify the amount of TON for conversion
+3. View the calculated amount of PRDX to receive
+4. Confirm the operation
 
-### On Pricing
+**Execution Example:**
 
-**Can the PRDX/TON rate fall?**
+_Initial System State:_
 
-Yes, short-term fluctuations are possible depending on:
-- Miner activity
-- Mining results
+-   Reserve $R$: 100 TON
+-   Emission $S$: 100,000 PRDX
+-   Base Rate $P_{base}$: $100,000 / 100 = 1,000$ PRDX / TON
 
-However, the mathematical model creates long-term deflationary pressure.
+_User Action:_ Conversion of 10 TON
 
-### On Mining
+$$
+PRDX_{received} = 10 \times \frac{100,000}{100} \times (1 - 0.015625) = 10 \times 1,000 \times 0.984375 = 9,843.75 \text{ PRDX}
+$$
 
-**How does the Mine operation differ from ordinary speculation?**
+_Important Nuance:_ The fee of 0.15625 TON (1.5625% of 10 TON) does not enter the protocol reserve, so the overall system rate does not change.
 
-| Aspect | Market Speculation | Mine Operation |
-|--------|--------------------|----------------|
-| Predictability | Low | High (known probabilities) |
-| Transparency | Limited | Full (open algorithms) |
-| Fairness | Information asymmetry | Equal conditions |
-| Loss Result | Profit to other participants | Distribution among all |
+### 5.2. Burn Operation — Returning TON
 
-**Why is the expected value of mining negative?**
+**Economic Essence:** Reverse conversion of PRDX tokens into TON.
 
-Negative expectation (-12.5%) is a key feature of the system:
-1. Creates deflationary pressure
-2. Increases the value of remaining PRDX
-3. Ensures sustainable value growth
-4. Transforms individual risk into collective benefit
+**Step-by-Step Process:**
 
-## 7. Glossary
+1. Select "Burn" operation in the interface
+2. Specify the amount of PRDX for conversion
+3. View the calculated amount of TON to receive
+4. Confirm the operation
 
-| Term | Definition |
-|------|------------|
-| **PARADOX** | System of financial instruments on the TON blockchain |
-| **PRDX** | Deflationary token of the PARADOX system |
-| **MINT** | Token minting: send TON to the system → receive PRDX (TON are reserved, new PRDX are minted) |
-| **BURN** | Token burning: send PRDX to the system → receive TON (PRDX are destroyed, TON are returned from reserve) |
-| **MINE** | Token mining: send PRDX to the system → receive PRDX probabilistically (sent are burned, result is minted anew) |
-| **MINE LIMIT** | Limit on maximum win (12.5% of supply) |
-| **ORACLE** | System for generating cryptographically secure random numbers |
-| **SEED** | Random number for generating mining outcomes |
-| **Final_seed** | Result of XOR between user and oracle numbers |
-| **Outcomes** | Number of possible mining outcomes (1-32) |
-| **Expected Value** | Average result of the operation with repeated trials |
-| **Deflationary Pressure** | Effect of reducing the number of tokens |
-| **St. Petersburg Paradox** | Probabilistic model, basis of the mining system |
+**Execution Example:**
 
-## 8. Conclusion
+_Initial System State:_
 
-**PARADOX (PRDX)** represents an evolutionary step in the development of digital financial instruments, solving fundamental problems of traditional monetary systems through:
+-   Reserve $R$: 100 TON
+-   Emission $S$: 100,000 PRDX
+-   Burn Rate $P_{burn}$: $\frac{100}{100,000} \times (1 - 0.015625) = 0.000984375$ TON / PRDX
 
-### Key Achievements
-- **Mathematical Determinism** instead of market chaos
-- **Controlled Deflation** instead of inflationary devaluation
-- **Transparent Algorithms** instead of unpredictable speculation
-- **Fair Risk Distribution** among participants
+_User Action:_ Conversion of 10,000 PRDX
 
-### System Innovations
+$$
+TON_{received} = 10,000 \times \frac{100}{100,000} \times (1 - 0.015625) = 10,000 \times 0.001 \times 0.984375 = 9.84375 \text{ TON}
+$$
 
-PARADOX proves the possibility of creating financial instruments that:
-1. **Combine Stability and Growth** — providing predictability without stagnation
-2. **Transform Speculation** — turning chaos into a mathematically verified mechanism
-3. **Create a Fair Environment** — with equal access to information and opportunities
-4. **Ensure Resilience** — through full reserve backing
+_Important Nuance:_ The fee of 156.25 PRDX (1.5625% of 10,000 PRDX) remains in the system and is not burned, so the overall system rate does not change.
 
-The mathematical formulas underlying all operations guarantee transparency and predictability, allowing each participant to make informed decisions based on objective data.
+### 5.3. Mine Operation — Probabilistic Transformation
 
-PARADOX opens a new era of **mathematical money** — where technology serves to create more fair, transparent, and efficient financial relationships.
+**Economic Essence:** Voluntary participation in a process with negative mathematical expectation, which on a system scale generates deflationary pressure.
+
+**Technical Implementation:** The Mine process consists of three stages to ensure cryptographic security and fairness:
+
+1. **Mine Commit:** The user generates a cryptographically secure random number and sends the signature of its hash to the contract.
+2. **Mine Process:** The smart contract requests a random number from the oracle.
+3. **Mine Resolve:** The user reveals their random number. The final seed for determining the outcome is calculated as $random = seed(oracle) \oplus seed(user)$. The outcome number is determined as the number of consecutive ones from the end of the binary representation of $random$ plus 1.
+
+## 6. PRDX as an Ideal Reserve Asset
+
+### 6.1. Comparative Analysis
+
+| Parameter           | Fiat Money            | Bitcoin        | Stablecoins         | PRDX          |
+| ------------------- | --------------------- | -------------- | ------------------- | ------------- |
+| **Backing**         | Trust in government   | Network effect | Fiat reserves       | TON in reserve|
+| **Inflation**       | High                  | Moderate       | Depends on issuer   | Deflation     |
+| **Volatility**      | Low                   | High           | Very low            | Moderate*     |
+| **Transparency**    | Low                   | High           | Medium              | Full          |
+| **Growth Potential**| Low                   | High           | Absent              | High          |
+
+> Note: PRDX retains TON volatility as it is tied to it through reserves, but the deflation mechanism reduces overall risks and creates a growth trend.
+
+### 6.2. Advantages of PRDX as a Reserve Asset
+
+-   **Mathematical Predictability**
+    Unlike traditional assets whose value depends on unpredictable market factors, the price of PRDX is determined by transparent algorithms. This allows building long-term strategies based on objective data.
+
+-   **Inflation Protection**
+    The built-in deflation mechanism provides protection against devaluation, which is absent in fiat money and many other cryptoassets.
+
+-   **Full Backing**
+    Each PRDX token is backed by real TON in the protocol reserve, ensuring fundamental value and reducing risks compared to partially backed or unbacked assets.
+
+-   **Risk Reduction**
+    Although PRDX is tied to TON and retains its volatility, the controlled deflation mechanism creates a counter-trend toward value growth, which overall reduces investment risks.
+
+## 7. Getting Started with PARADOX
+
+### 7.1. Preparatory Steps
+
+1. **Wallet Installation:** It is recommended to use wallets compatible with the TON network (e.g., Tonkeeper).
+2. **Obtaining Test TON:** At the current stage, PARADOX operates on the TON testnet. Test TON must be obtained for experiments with the protocol.
+3. **Studying Documentation:** Before starting, it is recommended to carefully study this documentation and understand the principles of the system.
+
+### 7.2. Interacting with the Interface
+
+1. **Go to the Bot:** Open [PrdxCoin Bot](https://t.me/PrdxCoinBot) in Telegram.
+2. **Connect Wallet:** Use the "Connect" function to securely connect your TON wallet.
+3. **Select Operation:** On the main screen, select the desired operation (Mint, Burn, Mine).
+4. **Perform Operations:** Follow the on-screen instructions to perform the selected operation.
+
+> **Important Warning:** PARADOX is currently deployed on the TON testnet. All operations should be conducted using test TON, which has no real value. Do not use the main TON networks or real funds to interact with the protocol at this stage.
+
+## 8. Participation Strategies in the Protocol
+
+### 8.1. Conservative Strategy (Alice 👩)
+
+**Goal:** Long-term preservation and multiplication of capital through the system's deflationary mechanism.
+
+**Methods:**
+
+-   Regular acquisition of PRDX through Mint operation
+-   Long-term holding of obtained tokens
+-   Periodic monitoring of system state
+
+**Advantages:**
+
+-   Minimal risk level
+-   Simplicity of implementation
+-   Passive participation in system growth
+
+### 8.2. Active Strategy (Bob 👨)
+
+**Goal:** Active increase in the amount of PRDX through participation in Mine operation.
+
+**Methods:**
+
+-   Regular participation in Mine operation with various parameters
+-   Analysis of probability distributions for different $n$ values
+-   Balancing between conservative and aggressive approaches
+
+**Advantages:**
+
+-   Potential for rapid increase in PRDX amount
+-   Active participation in maintaining system operation
+-   Access to the full range of protocol capabilities
+
+## 9. Frequently Asked Questions
+
+### 9.1. General Questions
+
+**What is the main difference between PRDX and traditional stablecoins?**
+
+Stablecoins are designed to maintain a stable value tied to an external asset (e.g., US dollar). PRDX, on the other hand, creates a mathematically predictable economy with a tendency toward value growth due to the deflationary mechanism. While stablecoins aim for stability, PRDX aims for sustainable growth.
+
+**What risks exist when using PARADOX?**
+
+-   **Protocol Risk:** Possibility of vulnerabilities in smart contracts
+-   **Liquidity Risk:** Although the Burn operation guarantees TON return, its value depends on the current system state
+-   **Risk for Active Participants:** Negative mathematical expectation of Mine operation creates systematic risk for its participants
+-   **Market Risk:** PRDX retains TON volatility as it is backed by it
+
+### 9.2. Mining Questions
+
+**Why is the mathematical expectation of the Mine operation negative?**
+
+The negative mathematical expectation ($EV_{mine} = -12.5\%$) is a fundamental element of the PARADOX economic model. It ensures the system's deflationary nature, as it leads to a reduction in the total amount of PRDX in circulation on average. This reduction creates pressure toward token value growth, benefiting all holders.
+
+**How does the Mine operation differ from gambling?**
+
+Key differences:
+
+-   **Transparency:** All algorithms and probabilities are fully open
+-   **Mathematical Certainty:** Results are determined by clear mathematical models
+-   **System Effect:** Individual "losses" transform into collective benefit
+-   **No Intermediaries:** The process is fully decentralized and algorithmic
+
+### 9.3. Pricing Questions
+
+**Can the PRDX to TON rate decrease?**
+
+Yes, short-term rate fluctuations are possible. They may be caused by:
+
+-   Changes in the ratio between TON reserve and PRDX emission
+-   Activity of Mine operation participants
+-   External market factors affecting TON value
+
+However, the mathematical model creates long-term deflationary pressure, which forms a trend toward PRDX value growth.
+
+**How do fees affect the system?**
+
+Fees perform several important functions:
+
+-   Ensure the sustainability of the economic model
+-   Create incentives for further protocol development
+-   Support infrastructure operation
+-   Balance supply and demand in the system
+
+## 10. Glossary of Terms
+
+**PARADOX** — decentralized financial protocol implementing a model of deflationary money with mathematical pricing.
+
+**PRDX** — native token of the PARADOX protocol, fully backed by TON and possessing deflationary characteristics.
+
+**Mint** — operation of acquiring PRDX tokens in exchange for TON. Contributed TON enters the protocol reserve.
+
+**Burn** — operation of returning TON from the protocol reserve in exchange for PRDX tokens. Provided PRDX is withdrawn from circulation.
+
+**Mine** — probabilistic PRDX transformation operation based on an adapted St. Petersburg paradox model.
+
+**St. Petersburg Paradox** — classic probability theory problem demonstrating the divergence between the theoretical mathematical value of a lottery and people's practical willingness to pay for participation.
+
+**Mathematical Expectation** — average result of a probabilistic operation upon repeated execution. In the context of PARADOX, it characterizes the systemic effect of the Mine operation.
+
+**Deflationary Pressure** — economic effect expressed in the gradual reduction of the total amount of PRDX in circulation, which, all else being equal, leads to an increase in token value.
+
+## 11. Conclusion
+
+PARADOX represents an experiment in creating next-generation financial instruments — instruments whose value is determined not by market speculations, but by transparent mathematical algorithms.
+
+Through the adaptation of the classic probabilistic model of the St. Petersburg paradox, the protocol creates a symbiotic economic environment where different participant behavior strategies coexist mutually beneficially. Conservative holders benefit from the deflationary pressure created by active participants, while active participants gain the opportunity to increase their assets through clearly defined probabilistic processes.
+
+The system's sustainability is ensured by fundamental economic principles and mathematically verified parameters. The negative mathematical expectation of the Mine operation creates constant deflationary pressure, while limits on operation sizes protect the system from excessive influence by individual participants.
+
+PARADOX is not just another digital asset. It is an exploration of new forms of money based on transparency, mathematical predictability, and fair distribution of benefits among all system participants.
+
+---
+
+_This documentation describes the current state of the PARADOX protocol. System parameters may be changed during the protocol's development. Up-to-date information can always be found in the project's official sources._
