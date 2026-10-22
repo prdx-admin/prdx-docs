@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PARADOX (PRDX) protocol documentation</title>
+<meta name="description" content="PARADOX (PRDX) protocol documentation in English and Russian.">
+<link rel="alternate" hreflang="en" href="https://docs.prdxcoin.com/en/">
+<link rel="alternate" hreflang="ru" href="https://docs.prdxcoin.com/ru/">
+<link rel="alternate" hreflang="x-default" href="https://docs.prdxcoin.com/">
+<link rel="icon" href="/en/assets/favicon.ico">
+<script>
+  // Russian-speaking browsers open /ru/, the rest /en/.
+  var langs = navigator.languages || [navigator.language || ""];
+  var ru = langs.some(function (l) { return /^(ru|uk|be|kk)\b/i.test(l); });
+  location.replace((ru ? "/ru/" : "/en/") + location.hash);
+</script>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0b0d0d; color: #f2f7f7; font: 16px/1.5 system-ui, sans-serif; }
+  a { color: #5bf1f9; margin: 0 0.75em; }
+</style>
+</head>
+<body>
+  <p><a href="/en/">English</a><a href="/ru/">Русский</a></p>
+</body>
+</html>

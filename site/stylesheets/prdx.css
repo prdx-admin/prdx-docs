@@ -1,0 +1,80 @@
+/* PRDX palette, taken from prdxcoin.com: burn cyan, mint green, mine violet on near-black. */
+
+:root {
+  --prdx-cyan: #5bf1f9;
+  --prdx-green: #5cfaa9;
+  --prdx-violet: #9f8efc;
+  --prdx-ink: #0b0d0d;
+  --prdx-gradient: linear-gradient(90deg, var(--prdx-cyan), var(--prdx-green));
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 180;
+  --md-default-bg-color: var(--prdx-ink);
+  --md-default-bg-color--light: #121616;
+  --md-code-bg-color: #131818;
+  --md-primary-fg-color: var(--prdx-ink);
+  --md-primary-fg-color--light: #1a1e1f;
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #f2f7f7;
+  --md-accent-fg-color: var(--prdx-green);
+  --md-typeset-a-color: var(--prdx-cyan);
+  --md-footer-bg-color: #070909;
+  --md-footer-bg-color--dark: #000;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--prdx-ink);
+  --md-primary-fg-color--light: #1a1e1f;
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #f2f7f7;
+  --md-accent-fg-color: #0d9a5e;
+  --md-typeset-a-color: #08848b;
+}
+
+/* a thin brand gradient under the header */
+.md-header {
+  box-shadow: none;
+  border-bottom: 2px solid transparent;
+  border-image: var(--prdx-gradient) 1;
+}
+
+.md-header__title,
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Montserrat", var(--md-text-font-family), sans-serif;
+}
+
+.md-typeset h1 {
+  font-weight: 800;
+  background: var(--prdx-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  padding-top: 0.4em;
+}
+
+.md-header__button.md-logo img {
+  height: 1.8rem;
+}
+
+.md-typeset img {
+  border-radius: 0.4rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-default-bg-color--light);
+}
+
+.md-typeset .arithmatex {
+  overflow-x: auto;
+}
+
+.md-typeset h1 .headerlink {
+  display: none;
+}
