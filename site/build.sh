@@ -27,4 +27,6 @@ done
 cp site/root/* _site/
 # llms-full.txt: оба текста документации в Markdown для языковых моделей
 cat en/docs.md ru/docs.md > _site/llms-full.txt
-cp _site/en/404.html _site/404.html
+# страница 404 одна на все три сайта (prdxcoin.com, app, docs): и в корне, и в обоих языках
+cp site/root/404.html _site/en/404.html
+cp site/root/404.html _site/ru/404.html
