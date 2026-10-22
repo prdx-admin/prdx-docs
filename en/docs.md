@@ -340,7 +340,7 @@ As the supply grows, the limit grows, and high levels become available again. A 
 
 The limit bounds the fall of the price after a large payout. The contract issues a payout of 12.5% of the supply as new PRDX, and the PRDX price falls by about 11%: $1 - 1/1.125 \approx 0.11$. If large payouts come on several tickets at once, the price falls more.
 
-If mining goes on, such a fall is temporary: mining of the other tickets again shrinks the supply on average, and the price grows. In simulation, two years after a payout of 12.5% of the supply the price lags the run without it by 2% (figure 8a).
+If mining goes on, such a fall is temporary: mining of the other tickets again shrinks the supply on average, and the price grows. In simulation, two years after a payout of 12.5% of the supply the price lags the run without it by 6% (figure 8a).
 
 Figure 8d shows how the limit affects the growth of the reserve and the price falls.
 
@@ -427,9 +427,9 @@ In the simulation each participant has a risk profile ρ from 0 to 1. A particip
 
 <p align="center"><img src="../figures/fig-classes.png" width="820" alt="Results by risk profile"></p>
 
-*Figure 5. The simulation covers 100 years of the protocol with 20,000 participants. (a) The panel shows the outcome of each class of participants and the Mint and Burn fees as shares of all coins put in. The bars sum to zero: holders receive what miners lose on average, minus the fees. (b) The panel shows the distribution of outcomes within each class.*
+*Figure 5. Two participation models. The top row is the closed population: 20,000 participants, one year, 100 runs. The bottom row is the inflow model (section 8): participants arrive and leave, four years, 20 runs, ε = 0.8. (a, c) The panels show the outcome of each class of participants and the Mint and Burn fees as shares of all coins put in. The bars sum to zero: holders receive what miners lose on average, minus the fees. (b, d) The panels show the distribution of outcomes within each class. The axis runs to the largest outcome, and a dot marks the largest outcome of each class.*
 
-In the simulation holders and participants with a low ρ end most years with a profit. Participants with a high ρ lose part of their PRDX more often, but only among them are those who multiplied their capital tenfold or more in a year.
+In the simulation holders and participants with a low ρ end most years with a profit. Participants with a high ρ lose part of their PRDX more often, but only among them are those who multiplied their capital tenfold or more in a year. In the inflow model holders also gain, and all classes of miners lose on average, including the class with ρ up to 0.25. A miner in this model leaves when less than 20% of what they brought remains, so on panel (d) the miners' outcomes start at about ×0.2. In both models the largest outcomes of single miners exceed ×1000.
 
 ---
 
@@ -465,6 +465,8 @@ where $V$ is the sum of deposits over a year in reserve coins at the price at th
 |---|---|
 | holders | come the more often, the more $y$ exceeds the alternative yield $r^*$ (5% a year in the base case) |
 | miners | come the more often, the larger the largest payout; the sensitivity ε shows by how many percent more miners come when the largest payout grows by 1% |
+| miner's strategy | every miner has their own risk profile ρ (§7.3): it sets the share of PRDX spent on tickets, the level and the number of attempts |
+| exit | holders leave the less often, the more $y$ exceeds $r^*$; a miner leaves when less than 20% of what they brought remains |
 | start | 10,000 participants |
 
 If ε is below 1, the reserve grows to a stable size. If ε is above 1, the reserve grows while there are new participants in the market.
@@ -473,17 +475,17 @@ If ε is below 1, the reserve grows to a stable size. If ε is above 1, the rese
 
 <p align="center"><img src="../figures/fig-loop.png" width="820" alt="Participation"></p>
 
-*Figure 6. The simulation covers four years of the protocol, 20 runs. The panels show: (a) the reserve, (b) the PRDX price, (c) the holder's annual price growth $y$, (d) the share of miners. The grey line shows a model without feedback: participants come at a constant rate. In that model the reserve grows 1.6 times and the price 2.4 times, because 12.5% of deposits is shared by a small reserve. With feedback at ε = 0.5 and ε = 0.8 the reserve grows 5–11 times and the price 1.7–2 times. At ε = 1.2 the reserve grows 45 times and the price 2.8 times.*
+*Figure 6. The simulation covers four years of the protocol, 20 runs. The panels show: (a) the reserve, (b) the PRDX price, (c) the holder's annual price growth $y$, (d) the share of miners. The grey line shows a model without feedback: participants come at a constant rate. In that model the reserve grows 1.5 times and the price 2 times, because 12.5% of deposits is shared by a small reserve. With feedback at ε = 0.5 and ε = 0.8 the reserve grows 5–9 times and the price 1.6–1.8 times. At ε = 1.2 the reserve grows 37 times and the price 2.5 times.*
 
 <p align="center"><img src="../figures/fig-phase.png" width="820" alt="Reserve and holders' yield"></p>
 
-*Figure 7. Each cell is built from eight runs. (a) The panel shows how many times the reserve grew over four years: from ×1.1 to ×28. The reserve grows faster at a larger ε and a smaller alternative yield $r^*$. (b) The panel shows how much the price growth exceeds the alternative yield in the last year, in percentage points. At ε > 1 the price growth exceeds the alternative yield for any $r^*$ in the range. The dashed line marks ε = 1.*
+*Figure 7. Each cell is built from eight runs. (a) The panel shows how many times the reserve grew over four years: from ×1.0 to ×23. The reserve grows faster at a larger ε and a smaller alternative yield $r^*$. (b) The panel shows how much the price growth exceeds the alternative yield in the last year, in percentage points. At ε = 1.5 the price growth exceeds the alternative yield for any $r^*$ in the range, at ε = 1.25 for $r^*$ up to 20%. The dashed line marks ε = 1.*
 
 <p align="center"><img src="../figures/fig-shock-and-cap.png" width="820" alt="A large payout, holders leaving and the limit"></p>
 
-*Figure 8. Each run with an event is compared with the same run without it, ε = 0.8. (a) On day 730 one miner mines 12.5% of the supply. The price falls by about 11% and by the end of the fourth year lags the run without the event by 2%. (b, c) On day 730 half of the holders leave. The price growth for the remaining holders speeds up; within half a year the number of holders returns to 85–90% of the run without the event, and by the end of the fourth year to its level. (d) The panel shows the reserve after four years at different payout limits. The typical largest one-day price fall is given above the bars. At a 12.5% limit the reserve grows 10 times, and the largest one-day fall is 7%.*
+*Figure 8. Each run with an event is compared with the same run without it, ε = 0.8. (a) On day 730 one miner mines 12.5% of the supply. The price falls by about 11% and by the end of the fourth year lags the run without the event by 6%. (b, c) On day 730 half of the holders leave. The price growth for the remaining holders speeds up; within half a year the number of holders returns to 81% of the run without the event (median), and by the end of the fourth year to 96%. (d) The panel shows the reserve after four years at different payout limits. The typical largest one-day price fall is given above the bars. At a 12.5% limit the reserve grows 7.8 times, and the largest one-day fall is 8%.*
 
-In figure 8d a 1.6% limit gives a one-day fall of 1%, but the reserve barely grows. A 25% limit gives 21 times reserve growth and a 10% fall.
+In figure 8d a 1.6% limit gives a one-day fall of 1%, but the reserve barely grows. A 25% limit gives 19 times reserve growth and a 7% fall.
 
 ---
 
@@ -577,7 +579,7 @@ Website: [prdxcoin.com](https://prdxcoin.com) · app: [app.prdxcoin.com](https:/
 
 - **Test network.** The protocol is experimental and runs on test networks.
 - **Average ticket result.** The average payout equals 87.5% of the deposit. On each ticket a participant loses 12.5% of the deposit on average. The larger the share of PRDX a participant spends on tickets, the lower their average result (§7.2).
-- **Price fall after a large payout.** The contract issues the payout as new PRDX, and the price falls. A payout at the limit lowers the price by about 11%. In simulation such a fall is temporary, and the price fell in 1–4% of years (sections 5 and 6). If large payouts come on several tickets at once, the price falls more.
+- **Price fall after a large payout.** The contract issues the payout as new PRDX, and the price falls. A payout at the limit lowers the price by about 11%. In simulation such a fall is temporary: in the closed population the price fell in 1–4% of years, in the inflow model in 3 years out of 120 (sections 5, 6 and 8). If large payouts come on several tickets at once, the price falls more.
 - **Dependence on miners.** The price grows with the sum of deposits (section 6). If there are no miners, the price does not grow.
 - **Price in the reserve coin.** The PRDX price is in the reserve coin. Against other currencies PRDX rises and falls together with that coin.
 - **USDT freeze.** USDT is issued by Tether, which can freeze USDT on any address, including the reserve's, for example at a regulator's request. Gram and SOL are the networks' own coins and cannot be frozen this way.
@@ -650,7 +652,7 @@ Yes, while mining has not started. A ticket can be canceled for exactly 87.5% of
 
 Yes. The protocol issues mined PRDX, so a large payout increases the number of PRDX at the same reserve, and the PRDX price falls; large payouts on several tickets at once lower it more. The fall from one payout is limited: about 11% at most.
 
-If mining goes on, such a fall is temporary: the number of PRDX shrinks again on average, and the PRDX price grows. In prdx-sim simulations with 100 to 100,000 participants the PRDX price fell in 1–4% of years.
+If mining goes on, such a fall is temporary: the number of PRDX shrinks again on average, and the PRDX price grows. In prdx-sim simulations the PRDX price fell in 1–4% of years with 100 to 100,000 participants, and in 3 years out of 120 in the model where participants arrive and leave.
 
 ### 13.13. Can anyone freeze or take my PRDX?
 
