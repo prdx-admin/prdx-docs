@@ -6,7 +6,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 
 <div align="center">
 
-[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQDTGn-ZvqG33QAKWXSA5uVKHVgZ9xljk0fZAcIDPIbX9q1q) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Group](https://img.shields.io/badge/Telegram-Group-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxproject) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQDTGn-ZvqG33QAKWXSA5uVKHVgZ9xljk0fZAcIDPIbX9q1q) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Group](https://img.shields.io/badge/Telegram-Group-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 
@@ -564,10 +564,12 @@ The Solana program works by the same rules. On Solana a ticket is transferred wi
 
 ## 11. How to try the protocol
 
-1. Open the [PrdxCoin](https://t.me/prdxcoinbot) app in Telegram.
+1. Open the app in a browser, [app.prdxcoin.com](https://app.prdxcoin.com), or in Telegram, [@prdxcoinbot](https://t.me/prdxcoinbot). Telegram offers the TON deployments; the browser offers the TON and Solana deployments.
 2. Turn on **TRIAL** mode. In this mode the app works with a test balance without a wallet: you can Mint, buy a ticket and mine PRDX with it, and view the history of operations. The grace period in TRIAL lasts 1 minute; the other parameters match the testnet.
-3. To work with the testnet, open the **CONNECT** section, choose the network and the reserve currency (on TON: Gram or USDT, on Solana: SOL or USDT) and connect a wallet. Test coins come from the faucet of the network.
+3. To work with the testnet, open the **CONNECT** section, choose the network and the reserve currency (on TON: Gram or USDT, on Solana: SOL) and connect a wallet. Test coins come from the faucet of the network.
 4. The **HOW IT WORKS** plate on the main screen opens the introductory tutorial: the protocol's paradox and Alice's and Bob's strategies. The **?** button in the app's header opens a detailed tutorial on the current section.
+
+Website: [prdxcoin.com](https://prdxcoin.com) · app: [app.prdxcoin.com](https://app.prdxcoin.com), [@prdxcoinbot](https://t.me/prdxcoinbot) · channel: [t.me/prdxcoinproject](https://t.me/prdxcoinproject) · simulator: [prdx-sim](https://github.com/prdx-admin/prdx-sim) · documentation source: [prdx-docs](https://github.com/prdx-admin/prdx-docs)
 
 ---
 
