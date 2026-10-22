@@ -1,0 +1,21 @@
+{#- Поиск и карточка ссылки: заголовок страницы и Open Graph. Тексты — в extra каждого языка
+    (site/en.yml, site/ru.yml); описание — то же, что на сайте prdxcoin.com. -#}
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  <title>{{ config.extra.title }}</title>
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="alternate" hreflang="x-default" href="https://docs.prdxcoin.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PARADOX (PRDX)">
+  <meta property="og:title" content="{{ config.extra.title }}">
+  <meta property="og:description" content="{{ config.site_description }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="https://prdxcoin.com/og-{{ 'ru' if config.theme.language == 'ru' else 'en' }}.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="{{ config.extra.locale }}">
+  <meta name="twitter:card" content="summary_large_image">
+{% endblock %}

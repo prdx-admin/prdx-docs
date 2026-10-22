@@ -1,0 +1,34 @@
+INHERIT: ../mkdocs.yml
+site_name: PARADOX
+site_description: >-
+  Токен PRDX в блокчейнах TON и Solana с полным резервом. Кто ищет риск, тратит PRDX на билеты на
+  добычу по правилам Петербургской игры, кто избегает, хранит PRDX. Плату за риск посредник не
+  забирает: она сгорает, и из открытого риска одних складывается устойчивый средний рост токена.
+extra:
+  title: Документация протокола PARADOX (PRDX)
+  locale: ru_RU
+site_url: https://docs.prdxcoin.com/ru/
+docs_dir: ../.site-src/ru
+site_dir: ../_site/ru
+copyright: PARADOX (PRDX) · тестовые токены без реальной ценности
+theme:
+  custom_dir: overrides
+  language: ru
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Светлая тема
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Тёмная тема
+plugins:
+  - search:
+      lang: [ru, en]
