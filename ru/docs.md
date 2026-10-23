@@ -17,7 +17,7 @@
 | [Solana devnet](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) | SOL | программа `GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ` |
 | Solana devnet | USDT | та же программа, ещё не запущена |
 
-> ⚠️ Протокол работает в тестовых сетях на токенах без реальной ценности. Не отправляйте в него средства из основной сети.
+> ⚠️ Протокол работает в тестовых сетях на токенах без реальной ценности. Не отправляйте в него средства из основной сети. Дату запуска основной сети объявим в [X](https://x.com/prdxdeveloper) и в [Telegram](https://t.me/prdxproject).
 
 ---
 
