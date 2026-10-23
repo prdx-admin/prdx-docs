@@ -17,7 +17,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 | [Solana devnet](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) | SOL | program `GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ` |
 | Solana devnet | USDT | the same program, not launched yet |
 
-> ⚠️ The protocol runs on test networks with tokens of no real value. Do not send mainnet funds to it.
+> ⚠️ The protocol runs on test networks with tokens of no real value. Do not send mainnet funds to it. The mainnet launch date will be announced on [X](https://x.com/prdxdeveloper) and [Telegram](https://t.me/prdxcoinproject).
 
 ---
 
