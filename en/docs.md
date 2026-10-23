@@ -6,7 +6,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 
 <div align="center">
 
-[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQDTGn-ZvqG33QAKWXSA5uVKHVgZ9xljk0fZAcIDPIbX9q1q) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Group](https://img.shields.io/badge/Telegram-Group-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQDTGn-ZvqG33QAKWXSA5uVKHVgZ9xljk0fZAcIDPIbX9q1q) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Group](https://img.shields.io/badge/Telegram-Group-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![X](https://img.shields.io/badge/X-@prdxdeveloper-000000?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 

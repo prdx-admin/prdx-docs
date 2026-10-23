@@ -9,4 +9,4 @@ The documentation of the PARADOX protocol: the contract rules on TON and Solana,
 
 The figures in `figures/` are produced by the [prdx-sim](https://github.com/prdx-admin/prdx-sim) simulator.
 
-[Website](https://prdxcoin.com) · [App](https://app.prdxcoin.com) · [Simulator](https://github.com/prdx-admin/prdx-sim)
+[Website](https://prdxcoin.com) · [App](https://app.prdxcoin.com) · [Simulator](https://github.com/prdx-admin/prdx-sim) · [X](https://x.com/prdxdeveloper)
