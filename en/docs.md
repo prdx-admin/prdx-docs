@@ -92,7 +92,7 @@ flowchart LR
     A["Alice"] -->|"Mint: coins → PRDX"| C["Contract<br/>reserve G, supply P"]
     B["Bob"] -->|"Mint: coins → PRDX"| C
     B -->|"buys a ticket for PRDX"| T["Mining ticket"]
-    T -->|"mining: the deposit burns,<br/>the payout is issued"| C
+    T -->|"mining: the deposit burns<br/>except the smallest payout,<br/>the rest of the payout is issued"| C
     C -.->|"P falls, price G/P grows"| A
 ```
 
@@ -152,7 +152,7 @@ PRDX needs no exchange: a participant issues it, and Burn is available at any mo
 
 ### 2.5. The role of the fees
 
-A ticket's deposit burns when mining starts, and the payout is issued after the secret is revealed (§4.3). Between these moments the PRDX price is higher than it will be after the payout is issued. Without fees, a participant could Mint before someone else's ticket starts mining and Burn before the payout is issued, taking part of the price growth without risk. Issuing the payout would then lower the price for those who hold PRDX. With the fees such a round trip pays off only if the burned deposit raises the price by more than the two fees. With a large supply, an ordinary ticket's deposit raises the price far less.
+A ticket's deposit burns when mining starts, except the smallest payout, and the rest of the payout is issued after the secret is revealed (§4.3). Between these moments the PRDX price is higher than it will be after the payout is issued. Without fees, a participant could Mint before someone else's ticket starts mining and Burn before the payout is issued, taking part of the price growth without risk. Issuing the payout would then lower the price for those who hold PRDX. With the fees such a round trip pays off only if the burned part of the deposit raises the price by more than the two fees. With a large supply, an ordinary ticket's deposit raises the price far less.
 
 ---
 
@@ -275,7 +275,7 @@ On TON a ticket is an NFT. On Solana a ticket is stored in a separate program ac
 | **Transfer** | the ticket passes to another owner | give or sell the ticket |
 | **Lower the level** (RESHAPE) | LVL decreases, MIN grows or stays the same; the deposit, DRAWS and the average payout stay the same | start mining a ticket over the limit |
 | **Cancel** | Bob gets exactly 87.5% of the deposit, the other 12.5% burns | get PRDX back if Bob changes his mind about mining |
-| **Start mining** | the deposit burns, mining starts (§4.3) | get the payout |
+| **Start mining** | the deposit burns except the smallest payout, mining starts (§4.3) | get the payout |
 
 RESHAPE is the standard way to start mining a ticket over the payout limit (section 5). Bob lowers the level: at the same deposit MIN grows and MAX shrinks, and the ticket passes the limit. The average payout stays at 87.5% of the deposit. The contract refuses a RESHAPE that raises LVL or lowers MIN: this keeps the ticket within the terms checked at purchase. RESHAPE is available almost always: at LVL 2 the largest payout equals 1.17 of the deposit, so any ticket with a deposit of no more than about 10.7% of the supply passes the limit.
 
@@ -285,13 +285,13 @@ Canceling is equivalent to mining a ticket with a single outcome. At $n = 1$ the
 
 ### 4.3. Mining procedure
 
-1. Bob sends the hash of the secret. The contract checks the payout limit and burns the deposit.
+1. Bob sends the hash of the secret. The contract checks the payout limit and burns the deposit except the smallest payout $E \cdot a$, which Bob gets in any outcome.
 2. A random number appears: on TON an oracle sends it, on Solana a drand round comes out (§9.1). From this moment the **grace period** runs: the time to reveal the secret. By default it lasts 24 hours, on the testnet 5 minutes.
-3. Bob reveals the secret. The contract computes the payout and issues it in full.
+3. Bob reveals the secret. The contract computes the payout, gives it to Bob in full and issues the payout above the smallest one.
 
-If the secret is not revealed by the end of the grace period, Bob can close the ticket with the smallest payout $E \cdot a$: this way the ticket closes even if the secret is lost.
+If the secret is not revealed by the end of the grace period, Bob can close the ticket with the smallest payout $E \cdot a$: this way the ticket closes even if the secret is lost. No new PRDX are issued then.
 
-However a ticket ends, the result for the supply is the same: the deposit is burned, and PRDX are issued to Bob. In mining the deposit burns at the start (step 1), on canceling at the moment of canceling.
+However a ticket ends, the result for the supply is the same: the deposit is burned, and PRDX are issued to Bob. In mining the deposit burns at the start except the smallest payout (step 1), and the smallest payout stays in the supply until the ticket closes; on canceling the deposit burns at the moment of canceling.
 
 | The ticket ended | Bob gets |
 |---|---|
@@ -304,7 +304,7 @@ stateDiagram-v2
     [*] --> INITIAL: purchase
     INITIAL --> INITIAL: transfer, lower the level
     INITIAL --> CANCELED: cancel, 87.5% of the deposit
-    INITIAL --> ACTIVATED: start mining, the deposit burns
+    INITIAL --> ACTIVATED: start mining, the deposit burns except the smallest payout
     ACTIVATED --> PROCESSED: a random number appeared
     PROCESSED --> COMPLETED: the secret revealed
     PROCESSED --> ABORTED: the grace period expired
@@ -323,7 +323,7 @@ $$
 E \cdot 2^{\,n-1} \cdot a \;\le\; 0.125 \cdot P
 $$
 
-If the ticket passed the check, the contract issues the payout in full, even if the supply changed by the end of mining.
+If the ticket passed the check, the contract gives Bob the payout in full, even if the supply changed by the end of mining.
 
 > **Example.** 100,000 PRDX are issued, so a ticket's largest payout is no more than 12,500 PRDX. Bob wants to start mining a ticket with a 1,000 PRDX deposit at LVL 20. The largest payout of such a ticket is 43.7 million PRDX, and the contract rejects the operation. The deposit does not burn. Bob lowers the level:
 >
@@ -682,7 +682,7 @@ A USDT reserve carries an outside risk: USDT is issued by Tether, which can free
 | **Mint** | issuing PRDX for coins put into the reserve, at the current price G/P |
 | **Burn** | burning PRDX and paying out coins from the reserve at the current price G/P |
 | **Ticket** | the right to mine PRDX, bought for PRDX; an NFT on TON |
-| **Mining** | issuing PRDX on a ticket: the contract burns the deposit and issues the payout |
+| **Mining** | issuing PRDX on a ticket: the contract burns the deposit except the smallest payout and issues the rest of the payout |
 | **Attempt** | a series of coin tosses until the first heads, no more than $n-1$ tosses; a ticket has 1 to 8 attempts |
 | **Payout** | the PRDX the contract issues on a ticket |
 | **Deposit, D** | the ticket price in PRDX |
