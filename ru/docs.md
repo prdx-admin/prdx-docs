@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQB2iabrNXzVwC_1PGqY0HiyDsSdscG_3m4TT3n_rvbOL4YW) [![Сайт](https://img.shields.io/badge/Сайт-prdxcoin.com-2EA043)](https://prdxcoin.com) [![Приложение](https://img.shields.io/badge/Приложение-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Группа](https://img.shields.io/badge/Telegram-Группа-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxproject) [![Telegram — Приложение](https://img.shields.io/badge/Telegram-Приложение-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![X](https://img.shields.io/badge/X-@prdxdeveloper-000000?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Симуляция](https://img.shields.io/badge/Симуляция-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQB2iabrNXzVwC_1PGqY0HiyDsSdscG_3m4TT3n_rvbOL4YW) [![Сайт](https://img.shields.io/badge/Сайт-prdxcoin.com-2EA043)](https://prdxcoin.com) [![Приложение](https://img.shields.io/badge/Приложение-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Канал](https://img.shields.io/badge/Telegram-Канал-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxproject) [![Telegram — Чат](https://img.shields.io/badge/Telegram-Чат-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Telegram — Приложение](https://img.shields.io/badge/Telegram-Приложение-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![X](https://img.shields.io/badge/X-@prdxdeveloper-000000?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Симуляция](https://img.shields.io/badge/Симуляция-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 
@@ -562,6 +562,12 @@ drand — сеть независимых участников, которая �
 
 Программа Solana работает по тем же правилам. Передать билет на Solana можно командой программы, тоже только до майнинга. Случайное число в Solana даёт раунд сети drand, а не оракул (п. 9.1).
 
+| Что | Адрес в Solana devnet |
+|---|---|
+| программа | [`GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ`](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) |
+| пул с резервом в SOL | [`9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C`](https://explorer.solana.com/address/9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C?cluster=devnet) |
+| токен PRDX этого пула | [`3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN`](https://explorer.solana.com/address/3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN?cluster=devnet) |
+
 ---
 
 ## 11. Как попробовать протокол
@@ -571,7 +577,20 @@ drand — сеть независимых участников, которая �
 3. Чтобы работать с тестовой сетью, откройте раздел **CONNECT**, выберите сеть и валюту резерва (в TON: Gram или USDT, в Solana: SOL) и подключите кошелёк. Тестовые монеты выдаёт кран соответствующей сети.
 4. Плашка **HOW IT WORKS** на главном экране открывает вводное обучение: парадокс протокола и стратегии Алисы и Боба. Кнопка **?** в шапке приложения открывает подробное обучение по текущему разделу.
 
-Сайт: [prdxcoin.com](https://prdxcoin.com/ru/) · приложение: [app.prdxcoin.com](https://app.prdxcoin.com), [@prdxcoinbot](https://t.me/prdxcoinbot) · канал: [t.me/prdxproject](https://t.me/prdxproject) · симулятор: [prdx-sim](https://github.com/prdx-admin/prdx-sim) · исходный текст документации: [prdx-docs](https://github.com/prdx-admin/prdx-docs)
+Ссылки протокола:
+
+| Ресурс | Ссылка | Что там |
+|---|---|---|
+| Сайт | [prdxcoin.com](https://prdxcoin.com/ru/) | протокол коротко, на пяти языках |
+| Приложение в браузере | [app.prdxcoin.com](https://app.prdxcoin.com) | TRIAL и тестовые сети TON и Solana |
+| Приложение в Telegram | [@prdxcoinbot](https://t.me/prdxcoinbot) | TRIAL и тестовые сети TON |
+| Документация | [docs.prdxcoin.com](https://docs.prdxcoin.com/ru/) | этот документ на русском и [английском](https://docs.prdxcoin.com/en/) |
+| Канал на русском | [t.me/prdxproject](https://t.me/prdxproject) | новости протокола |
+| Канал на английском | [t.me/prdxcoinproject](https://t.me/prdxcoinproject) | новости протокола на английском |
+| Чат | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | вопросы и обсуждение |
+| X | [x.com/prdxdeveloper](https://x.com/prdxdeveloper) | посты разработчика |
+| Симулятор | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | модель протокола, из которой построены рисунки документа |
+| Исходный текст документации | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | этот документ в Markdown |
 
 ---
 

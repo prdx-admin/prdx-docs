@@ -6,7 +6,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 
 <div align="center">
 
-[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQB2iabrNXzVwC_1PGqY0HiyDsSdscG_3m4TT3n_rvbOL4YW) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Group](https://img.shields.io/badge/Telegram-Group-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![X](https://img.shields.io/badge/X-@prdxdeveloper-000000?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![TON testnet](https://img.shields.io/badge/TON-testnet-FF6A00)](https://testnet.tonviewer.com/kQB2iabrNXzVwC_1PGqY0HiyDsSdscG_3m4TT3n_rvbOL4YW) [![Website](https://img.shields.io/badge/Website-prdxcoin.com-2EA043)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-2EA043)](https://app.prdxcoin.com) [![Telegram — Channel](https://img.shields.io/badge/Telegram-Channel-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![Telegram — Chat](https://img.shields.io/badge/Telegram-Chat-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Telegram — App](https://img.shields.io/badge/Telegram-App-26A5E4?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![X](https://img.shields.io/badge/X-@prdxdeveloper-000000?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Simulation](https://img.shields.io/badge/Simulation-prdx--sim-181717?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 
@@ -562,6 +562,12 @@ The main contract issues PRDX, holds the reserve, keeps the ticket collection an
 
 The Solana program works by the same rules. On Solana a ticket is transferred with a program command, also only before mining. The random number on Solana comes from a drand round, not from an oracle (§9.1).
 
+| What | Address on Solana devnet |
+|---|---|
+| program | [`GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ`](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) |
+| pool with the SOL reserve | [`9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C`](https://explorer.solana.com/address/9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C?cluster=devnet) |
+| this pool's PRDX token | [`3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN`](https://explorer.solana.com/address/3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN?cluster=devnet) |
+
 ---
 
 ## 11. How to try the protocol
@@ -571,7 +577,20 @@ The Solana program works by the same rules. On Solana a ticket is transferred wi
 3. To work with the testnet, open the **CONNECT** section, choose the network and the reserve currency (on TON: Gram or USDT, on Solana: SOL) and connect a wallet. Test coins come from the faucet of the network.
 4. The **HOW IT WORKS** plate on the main screen opens the introductory tutorial: the protocol's paradox and Alice's and Bob's strategies. The **?** button in the app's header opens a detailed tutorial on the current section.
 
-Website: [prdxcoin.com](https://prdxcoin.com) · app: [app.prdxcoin.com](https://app.prdxcoin.com), [@prdxcoinbot](https://t.me/prdxcoinbot) · channel: [t.me/prdxcoinproject](https://t.me/prdxcoinproject) · simulator: [prdx-sim](https://github.com/prdx-admin/prdx-sim) · documentation source: [prdx-docs](https://github.com/prdx-admin/prdx-docs)
+The protocol's links:
+
+| Resource | Link | What is there |
+|---|---|---|
+| Website | [prdxcoin.com](https://prdxcoin.com) | the protocol in short, in five languages |
+| App in the browser | [app.prdxcoin.com](https://app.prdxcoin.com) | TRIAL and the TON and Solana testnets |
+| App in Telegram | [@prdxcoinbot](https://t.me/prdxcoinbot) | TRIAL and the TON testnets |
+| Documentation | [docs.prdxcoin.com](https://docs.prdxcoin.com/en/) | this document in English and [Russian](https://docs.prdxcoin.com/ru/) |
+| Channel in English | [t.me/prdxcoinproject](https://t.me/prdxcoinproject) | protocol news |
+| Channel in Russian | [t.me/prdxproject](https://t.me/prdxproject) | protocol news in Russian |
+| Chat | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | questions and discussion |
+| X | [x.com/prdxdeveloper](https://x.com/prdxdeveloper) | the developer's posts |
+| Simulator | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | the protocol model the document's figures are built from |
+| Documentation source | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | this document in Markdown |
 
 ---
 
