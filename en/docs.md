@@ -6,7 +6,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 
 <div align="center">
 
-[![Website](https://img.shields.io/badge/Website-prdxcoin.com-0D9A5E)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-0D9A5E)](https://app.prdxcoin.com) [![App — Telegram](https://img.shields.io/badge/App-@prdxcoinbot-0D9A5E?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![News — Telegram](https://img.shields.io/badge/News-@prdxcoinproject-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![News — X](https://img.shields.io/badge/News-@prdxdeveloper-08848B?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Chat — Telegram](https://img.shields.io/badge/Chat-@prdxcoinchat-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Simulator — GitHub](https://img.shields.io/badge/Simulator-prdx--sim-6A55E0?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![Website](https://img.shields.io/badge/Website-prdxcoin.com-0D9A5E)](https://prdxcoin.com) [![App](https://img.shields.io/badge/App-app.prdxcoin.com-0D9A5E)](https://app.prdxcoin.com) [![App — Telegram](https://img.shields.io/badge/App-@prdxcoinbot-0D9A5E?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![News — Telegram](https://img.shields.io/badge/News-@prdxcoinproject-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinproject) [![News — X](https://img.shields.io/badge/News-@prdxdev-08848B?logo=x&logoColor=white)](https://x.com/prdxdev) [![Chat — Telegram](https://img.shields.io/badge/Chat-@prdxcoinchat-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Simulator — GitHub](https://img.shields.io/badge/Simulator-prdx--sim-6A55E0?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 
@@ -17,7 +17,7 @@ This document describes the contract rules of the PARADOX protocol on TON and So
 | [Solana devnet](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) | SOL | program `GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ` |
 | Solana devnet | USDT | the same program, not launched yet |
 
-> ⚠️ The protocol runs on test networks with tokens of no real value. Do not send mainnet funds to it. The mainnet launch date will be announced on [X](https://x.com/prdxdeveloper) and [Telegram](https://t.me/prdxcoinproject).
+> ⚠️ The protocol runs on test networks with tokens of no real value. Do not send mainnet funds to it. The mainnet launch date will be announced on [X](https://x.com/prdxdev) and [Telegram](https://t.me/prdxcoinproject).
 
 ---
 
@@ -590,7 +590,7 @@ The protocol's links:
 | Channel in English | [t.me/prdxcoinproject](https://t.me/prdxcoinproject) | protocol news |
 | Channel in Russian | [t.me/prdxproject](https://t.me/prdxproject) | protocol news in Russian |
 | Chat | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | questions and discussion |
-| X | [x.com/prdxdeveloper](https://x.com/prdxdeveloper) | the developer's posts |
+| X | [x.com/prdxdev](https://x.com/prdxdev) | the developer's posts |
 | Simulator | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | the protocol model the document's figures are built from |
 | Documentation source | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | this document in Markdown |
 

@@ -14,7 +14,7 @@ The figures in `figures/` are produced by the [prdx-sim](https://github.com/prdx
 | Website | [prdxcoin.com](https://prdxcoin.com) |
 | App | [app.prdxcoin.com](https://app.prdxcoin.com), in Telegram [@prdxcoinbot](https://t.me/prdxcoinbot) |
 | Telegram | channel [t.me/prdxcoinproject](https://t.me/prdxcoinproject), in Russian [t.me/prdxproject](https://t.me/prdxproject), chat [t.me/prdxcoinchat](https://t.me/prdxcoinchat) |
-| X | [x.com/prdxdeveloper](https://x.com/prdxdeveloper) |
+| X | [x.com/prdxdev](https://x.com/prdxdev) |
 | Simulator | [prdx-sim](https://github.com/prdx-admin/prdx-sim) |
 
 ## License

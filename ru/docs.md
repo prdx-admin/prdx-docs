@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Сайт](https://img.shields.io/badge/Сайт-prdxcoin.com-0D9A5E)](https://prdxcoin.com/ru/) [![Приложение](https://img.shields.io/badge/Приложение-app.prdxcoin.com-0D9A5E)](https://app.prdxcoin.com) [![Приложение — Telegram](https://img.shields.io/badge/Приложение-@prdxcoinbot-0D9A5E?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![Новости — Telegram](https://img.shields.io/badge/Новости-@prdxproject-08848B?logo=telegram&logoColor=white)](https://t.me/prdxproject) [![Новости — X](https://img.shields.io/badge/Новости-@prdxdeveloper-08848B?logo=x&logoColor=white)](https://x.com/prdxdeveloper) [![Чат — Telegram](https://img.shields.io/badge/Чат-@prdxcoinchat-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Симулятор — GitHub](https://img.shields.io/badge/Симулятор-prdx--sim-6A55E0?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
+[![Сайт](https://img.shields.io/badge/Сайт-prdxcoin.com-0D9A5E)](https://prdxcoin.com/ru/) [![Приложение](https://img.shields.io/badge/Приложение-app.prdxcoin.com-0D9A5E)](https://app.prdxcoin.com) [![Приложение — Telegram](https://img.shields.io/badge/Приложение-@prdxcoinbot-0D9A5E?logo=telegram&logoColor=white)](https://t.me/prdxcoinbot) [![Новости — Telegram](https://img.shields.io/badge/Новости-@prdxproject-08848B?logo=telegram&logoColor=white)](https://t.me/prdxproject) [![Новости — X](https://img.shields.io/badge/Новости-@prdxdev-08848B?logo=x&logoColor=white)](https://x.com/prdxdev) [![Чат — Telegram](https://img.shields.io/badge/Чат-@prdxcoinchat-08848B?logo=telegram&logoColor=white)](https://t.me/prdxcoinchat) [![Симулятор — GitHub](https://img.shields.io/badge/Симулятор-prdx--sim-6A55E0?logo=github&logoColor=white)](https://github.com/prdx-admin/prdx-sim)
 
 </div>
 
@@ -17,7 +17,7 @@
 | [Solana devnet](https://explorer.solana.com/address/GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ?cluster=devnet) | SOL | программа `GEnxVEpR9ALBhqhQPgPqeb59VAZS2JxTFt4hUArRD2yJ` |
 | Solana devnet | USDT | та же программа, ещё не запущена |
 
-> ⚠️ Протокол работает в тестовых сетях на токенах без реальной ценности. Не отправляйте в него средства из основной сети. Дату запуска основной сети объявим в [X](https://x.com/prdxdeveloper) и в [Telegram](https://t.me/prdxproject).
+> ⚠️ Протокол работает в тестовых сетях на токенах без реальной ценности. Не отправляйте в него средства из основной сети. Дату запуска основной сети объявим в [X](https://x.com/prdxdev) и в [Telegram](https://t.me/prdxproject).
 
 ---
 
@@ -590,7 +590,7 @@ drand — сеть независимых участников, которая �
 | Канал на русском | [t.me/prdxproject](https://t.me/prdxproject) | новости протокола |
 | Канал на английском | [t.me/prdxcoinproject](https://t.me/prdxcoinproject) | новости протокола на английском |
 | Чат | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | вопросы и обсуждение |
-| X | [x.com/prdxdeveloper](https://x.com/prdxdeveloper) | посты разработчика |
+| X | [x.com/prdxdev](https://x.com/prdxdev) | посты разработчика |
 | Симулятор | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | модель протокола, из которой построены рисунки документа |
 | Исходный текст документации | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | этот документ в Markdown |
 
