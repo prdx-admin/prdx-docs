@@ -1,0 +1,18 @@
+INHERIT: ../mkdocs.yml
+site_url: https://docs.prdxcoin.com/en/
+docs_dir: ../.site-src/en
+site_dir: ../_site/en
+site_description: >-
+  The PRDX token on the TON and Solana blockchains with a full reserve. Those who seek risk spend PRDX
+  on mining tickets by the rules of the St. Petersburg game, those who avoid it hold PRDX. No
+  intermediary takes the payment for risk: it burns, and the open risk of some adds up to a steady
+  average growth of the token.
+extra:
+  title: PARADOX (PRDX) protocol documentation
+  locale: en_US
+theme:
+  custom_dir: overrides
+  language: en
+plugins:
+  - search:
+      lang: en

@@ -1,0 +1,54 @@
+PRDX License 1.0
+
+Copyright (c) 2025-2026 prdx-admin (https://github.com/prdx-admin). All rights not
+granted below are reserved. Permission requests: prdxcoin@proton.me.
+
+"The Work" means the code, text, figures and data in this repository, except
+third-party files, which keep their own licenses: the fonts in site/stylesheets/fonts/
+are under the SIL Open Font License 1.1 (site/stylesheets/fonts/OFL.txt). "The
+Licensor" means the copyright holder named above. "PARADOX" means the deployments of
+the PARADOX (PRDX) protocol operated by the Licensor.
+
+1. Permissions
+
+You may use, copy, modify and distribute the Work, provided that:
+
+  a. every copy of the Work, whole or in part, keeps this license and the copyright
+     notice above;
+  b. a modified copy states that it was modified;
+  c. the use is not prohibited by section 2.
+
+2. Prohibited uses
+
+Without the Licensor's written permission, you may not:
+
+  a. use the Work for a commercial purpose. A commercial purpose is any use intended
+     for or directed toward commercial advantage or monetary compensation, including
+     selling the Work, selling access to it, and using it in a product or service
+     offered for a fee;
+  b. use the Work, or any part of it, to develop, operate or promote any protocol,
+     token or financial product other than PARADOX or a product that works with
+     PARADOX.
+
+This license does not limit uses the law allows without permission, such as
+quotation.
+
+3. Contributions
+
+If you send the Licensor a contribution to the Work, such as a patch, a pull request
+or code or text in an issue, you grant the Licensor a perpetual, worldwide,
+irrevocable, royalty-free license to use, modify, distribute and sublicense the
+contribution for any purpose, commercial purposes included. You confirm that you have
+the right to grant this license. No signature is needed: sending the contribution is
+enough.
+
+4. Termination
+
+If you break these terms, your permissions under this license end. They are restored
+if you stop within 30 days after the Licensor notifies you.
+
+5. No warranty
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE
+LICENSOR IS NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE WORK
+OR ITS USE. The Work is not financial advice.

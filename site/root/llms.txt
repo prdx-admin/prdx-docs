@@ -1,0 +1,18 @@
+# PARADOX (PRDX) protocol documentation
+
+> PARADOX is a protocol on the TON and Solana blockchains. Its PRDX token can be held or spent on tickets to mine new tokens (mining). The payout is random: it can be many times the ticket price, but on average it is smaller.
+
+The documentation describes the contract rules of the PARADOX protocol on TON and Solana, their mathematics and the simulation results. The protocol runs on test networks with tokens of no real value.
+
+## Documentation
+
+- [Documentation in English](https://docs.prdxcoin.com/en/): the full text, sections 1–14
+- [Documentation in Russian](https://docs.prdxcoin.com/ru/): the original text
+- [Full text for language models](https://docs.prdxcoin.com/llms-full.txt): the English and Russian texts in Markdown
+
+## Project
+
+- [Website](https://prdxcoin.com)
+- [App](https://app.prdxcoin.com): the TRIAL mode runs without a wallet
+- [Documentation source](https://github.com/prdx-admin/prdx-docs)
+- [Simulator prdx-sim](https://github.com/prdx-admin/prdx-sim): the figures of the documentation
