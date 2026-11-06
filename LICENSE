@@ -1,4 +1,4 @@
-PRDX License 1.0
+PRDX License 1.1
 
 Copyright (c) 2025-2026 prdx-admin (https://github.com/prdx-admin). All rights not
 granted below are reserved. Permission requests: prdxcoin@proton.me.
@@ -7,7 +7,8 @@ granted below are reserved. Permission requests: prdxcoin@proton.me.
 third-party files, which keep their own licenses: the fonts in site/stylesheets/fonts/
 are under the SIL Open Font License 1.1 (site/stylesheets/fonts/OFL.txt). "The
 Licensor" means the copyright holder named above. "PARADOX" means the deployments of
-the PARADOX (PRDX) protocol operated by the Licensor.
+the PARADOX (PRDX) protocol listed in the documentation at
+https://github.com/prdx-admin/prdx-docs.
 
 1. Permissions
 
@@ -28,7 +29,13 @@ Without the Licensor's written permission, you may not:
      offered for a fee;
   b. use the Work, or any part of it, to develop, operate or promote any protocol,
      token or financial product other than PARADOX or a product that works with
-     PARADOX.
+     PARADOX;
+  c. use the Work, or any part of it, to develop, operate or promote any deployment of
+     the PARADOX protocol other than PARADOX;
+  d. present your copy of the Work, or anything that carries or is made from it, as
+     published, operated or endorsed by the Licensor.
+
+You may test on a private deployment.
 
 This license does not limit uses the law allows without permission, such as
 quotation.
@@ -49,6 +56,7 @@ if you stop within 30 days after the Licensor notifies you.
 
 5. No warranty
 
-THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE
-LICENSOR IS NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE WORK
-OR ITS USE. The Work is not financial advice.
+TO THE EXTENT THE LAW ALLOWS, THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, AND THE LICENSOR IS NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM THE WORK OR ITS USE, INCLUDING ANY LOSS OF FUNDS CAUSED BY A
+DEFECT IN THE WORK. The Work is not financial advice.
