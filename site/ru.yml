@@ -10,7 +10,7 @@ extra:
 site_url: https://docs.prdxcoin.com/ru/
 docs_dir: ../.site-src/ru
 site_dir: ../_site/ru
-copyright: '© 2025–2026 prdx-admin · <a href="https://github.com/prdx-admin/prdx-docs/blob/main/LICENSE">PRDX License 1.1</a> · тестовые токены без реальной ценности'
+copyright: '© 2025–2026 prdx-admin · <a href="https://github.com/prdx-admin/prdx-docs/blob/main/LICENSE">CC BY 4.0</a> · тестовые токены без реальной ценности'
 theme:
   custom_dir: overrides
   language: ru

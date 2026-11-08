@@ -6,7 +6,7 @@ site_author: prdx-admin
 repo_url: https://github.com/prdx-admin/prdx-docs
 repo_name: prdx-admin/prdx-docs
 edit_uri: ""
-copyright: '© 2025–2026 prdx-admin · <a href="https://github.com/prdx-admin/prdx-docs/blob/main/LICENSE">PRDX License 1.1</a> · testnet tokens with no real value'
+copyright: '© 2025–2026 prdx-admin · <a href="https://github.com/prdx-admin/prdx-docs/blob/main/LICENSE">CC BY 4.0</a> · testnet tokens with no real value'
 
 theme:
   name: material
