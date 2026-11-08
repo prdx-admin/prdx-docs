@@ -13,7 +13,11 @@ for l in en ru; do
     -e 's#\(\.\./(en|ru)/docs\.md\)#(/\1/)#g' \
     -e 's#\.\./figures/#figures/#g' \
     -e 's#<div align="center">#<div align="center" markdown>#' \
-    $l/docs.md > .site-src/$l/index.md
+    -e 's#\$`([^`]*)`\$#$\1$#g' \
+    $l/docs.md |
+  # GitHub reads math as $`…`$ and ```math blocks; arithmatex reads $…$ and $$ blocks
+  awk '/^```math$/ { print "$$"; m = 1; next } m && /^```$/ { print "$$"; m = 0; next } { print }' \
+    > .site-src/$l/index.md
 done
 
 if [ "${1:-build}" = serve ]; then

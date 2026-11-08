@@ -27,7 +27,7 @@ Here is the paradox: the more PRDX is spent on tickets, the faster every PRDX ga
 2. **Ticket.** A ticket is bought for PRDX: the right to mine new PRDX. The payout follows the rules of the St. Petersburg game, an 18th-century problem whose paradox gave the protocol its name (§3.1). All possible payouts with their chances are known before the purchase. A payout can be many times the ticket price.
 3. **Average payout.** The ticket price is calculated so that the average payout equals 87.5% of the price for any level and any number of attempts (§3.3).
 4. **Deflation.** On average the other 12.5% burns while the reserve does not change, so mining shrinks the PRDX supply and raises its price. Everyone who has PRDX gets what burned through the price growth, in proportion to their PRDX. The protocol withholds only the Mint and Burn fees of 1.5625% (figure 5).
-5. **Statistics.** By the law of large numbers, the more tickets, the closer the burned share of PRDX comes to 12.5%, and by the central limit theorem the deviation shrinks in proportion to $1/\sqrt{N}$, where $N$ is the number of tickets (section 6). So the price growth rests on the statistics of all tickets, not on the luck of a single one. A price fall after the payout of one attempt is bounded by the limit (section 5). Simulations in [prdx-sim](https://github.com/prdx-admin/prdx-sim) that follow the contract rules agree with this calculation (figure 3). In simulation the price fell over a year in 7.7% of years with 100 participants and in 1% of years with 100,000 participants (figure 3d).
+5. **Statistics.** By the law of large numbers, the more tickets, the closer the burned share of PRDX comes to 12.5%, and by the central limit theorem the deviation shrinks in proportion to $`1/\sqrt{N}`$, where $`N`$ is the number of tickets (section 6). So the price growth rests on the statistics of all tickets, not on the luck of a single one. A price fall after the payout of one attempt is bounded by the limit (section 5). Simulations in [prdx-sim](https://github.com/prdx-admin/prdx-sim) that follow the contract rules agree with this calculation (figure 3). In simulation the price fell over a year in 7.7% of years with 100 participants and in 1% of years with 100,000 participants (figure 3d).
 6. **Two strategies.** Alice keeps PRDX and gains from the price growth. Bob spends PRDX on tickets: on average he gives up 12.5% of each ticket's price, and in return gets a chance of a payout many times the ticket price. The strategies can be combined (section 7).
 7. **A fair outcome.** The outcome is computed from the miner's secret and a random number. On TON the number is sent by an oracle, on Solana it is published by the drand network. The miner commits the secret before the number exists, and the source of the number sees only the hash of the secret, so neither the miner nor the source of the number chooses the outcome. The secret and the number are recorded on the blockchain, and anyone can recompute the outcome (section 9).
 8. **Conditions.** The price grows only while mining goes on, and it is expressed in the reserve coin. The protocol runs on test networks with tokens of no real value; the risks are collected in section 12.
@@ -104,9 +104,9 @@ All examples in this document are for the TON network and the Gram currency.
 
 The PRDX price equals the reserve divided by the supply:
 
-$$
+```math
 \text{PRDX price} = \frac{G}{P}
-$$
+```
 
 > **Example.** The reserve holds 100 Gram, and 10,000 PRDX are issued. One PRDX costs 0.01 Gram, that is, 1 Gram = 100 PRDX. The TON contracts started on the testnet at this price.
 
@@ -162,9 +162,9 @@ A coin is tossed until heads comes up. If heads comes up on the first toss, the 
 
 The expected value of this game is infinite:
 
-$$
+```math
 \mathbb{E} = \tfrac{1}{2}\cdot 1 + \tfrac{1}{4}\cdot 2 + \tfrac{1}{8}\cdot 4 + \ldots = \tfrac{1}{2} + \tfrac{1}{2} + \tfrac{1}{2} + \ldots = \infty
-$$
+```
 
 Yet people are willing to pay only a few coins to play. Cramer in 1728 and Daniel Bernoulli, Nicolaus's cousin, in 1738 explained this gap by the diminishing utility of money. Daniel Bernoulli's paper "Specimen theoriae novae de mensura sortis" ("Exposition of a New Theory on the Measurement of Risk") appeared in the journal of the St. Petersburg Academy of Sciences, "Commentarii Academiae Scientiarum Imperialis Petropolitanae". The paper states the problem with a coin, and by the same argument Bernoulli works out when a Petersburg merchant should insure goods shipped by sea from Amsterdam. After the journal the game is called the St. Petersburg game, and the gap between the expectation and the price of playing is called the St. Petersburg paradox. The PARADOX protocol is named after it.
 
@@ -180,24 +180,24 @@ A ticket has three parameters:
 
 | In the app | In formulas | What it sets | Allowed values | Why change it |
 |---|---|---|---|---|
-| **LVL** | $n$ | number of possible outcomes of an attempt | 2 to 24 (theoretically up to 32) | a high LVL gives a rare large payout, a low one a payout closer to the average |
-| **MIN** | $E$ | smallest payout of an attempt | from 1 PRDX | the ticket's scale: at the same LVL the ticket price is proportional to MIN |
-| **DRAWS** | $a$ | number of attempts | 1 to 8 | buy $a$ attempts in one transaction (§3.5) |
+| **LVL** | $`n`$ | number of possible outcomes of an attempt | 2 to 24 (theoretically up to 32) | a high LVL gives a rare large payout, a low one a payout closer to the average |
+| **MIN** | $`E`$ | smallest payout of an attempt | from 1 PRDX | the ticket's scale: at the same LVL the ticket price is proportional to MIN |
+| **DRAWS** | $`a`$ | number of attempts | 1 to 8 | buy $`a`$ attempts in one transaction (§3.5) |
 
-Mining a ticket consists of attempts. An attempt goes like this. A coin is tossed until heads comes up, but no more than $n-1$ times. If heads came up on the first toss, the payout equals MIN. With every further toss the payout doubles. If heads did not come up in $n-1$ tosses, the payout is the largest:
+Mining a ticket consists of attempts. An attempt goes like this. A coin is tossed until heads comes up, but no more than $`n-1`$ times. If heads came up on the first toss, the payout equals MIN. With every further toss the payout doubles. If heads did not come up in $`n-1`$ tosses, the payout is the largest:
 
-$$
+```math
 \text{MAX} = E \cdot 2^{\,n-1}
-$$
+```
 
-The payout of outcome number $k$ equals $E \cdot 2^{\,k-1}$, and its probability is:
+The payout of outcome number $`k`$ equals $`E \cdot 2^{\,k-1}`$, and its probability is:
 
-$$
+```math
 p_k = \begin{cases}
 \dfrac{1}{2^{\,k}}, & k = 1, \ldots, n-1 \\[6pt]
 \dfrac{1}{2^{\,n-1}}, & k = n
 \end{cases}
-$$
+```
 
 > **Example.** A ticket with LVL 6, MIN 4 PRDX and one attempt. The ticket costs 16 PRDX.
 >
@@ -212,15 +212,15 @@ $$
 
 ### 3.3. Ticket price
 
-The ticket price is called the **deposit** $D$. The deposit is calculated by a formula under which the average payout equals 87.5% of the deposit. In the contracts this share is the **RTP** parameter:
+The ticket price is called the **deposit** $`D`$. The deposit is calculated by a formula under which the average payout equals 87.5% of the deposit. In the contracts this share is the **RTP** parameter:
 
-$$
+```math
 D = \frac{a \cdot E \cdot (n + 1)}{2 \cdot \text{RTP}},
 \qquad
 \mathbb{E}[\text{payout}] = 0.875 \cdot D
-$$
+```
 
-The formula holds for any LVL and any number of attempts. The contract rounds each attempt's deposit down to the smallest unit of PRDX, so the average payout equals 87.5% of the deposit to within that unit. The ticket in the example above pays out $4 \cdot 7 / 2 = 14$ PRDX on average for a 16 PRDX deposit. The other 12.5% of the deposit burns on average and raises the PRDX price for everyone who has PRDX. For the ticket's owner it is the average loss on a ticket.
+The formula holds for any LVL and any number of attempts. The contract rounds each attempt's deposit down to the smallest unit of PRDX, so the average payout equals 87.5% of the deposit to within that unit. The ticket in the example above pays out $`4 \cdot 7 / 2 = 14`$ PRDX on average for a 16 PRDX deposit. The other 12.5% of the deposit burns on average and raises the PRDX price for everyone who has PRDX. For the ticket's owner it is the average loss on a ticket.
 
 ### 3.4. Average payout and spread
 
@@ -245,22 +245,22 @@ Figure 1 shows the probability of each payout. At LVL 2 a payout above the depos
 
 <p align="center"><img src="../figures/fig-tickets.png" width="820" alt="Payout probabilities of a ticket by level"></p>
 
-*Figure 1. A ticket with one attempt. The horizontal axis is the payout as a share of the deposit, the vertical axis its probability $2^{-k}$. The largest payout comes with the same probability as the one before it. A payout above the deposit is drawn in colour, a payout below the deposit in grey. The panel title gives the probability of a payout above the deposit.*
+*Figure 1. A ticket with one attempt. The horizontal axis is the payout as a share of the deposit, the vertical axis its probability $`2^{-k}`$. The largest payout comes with the same probability as the one before it. A payout above the deposit is drawn in colour, a payout below the deposit in grey. The panel title gives the probability of a payout above the deposit.*
 
 ### 3.5. A ticket with several attempts
 
-A ticket with DRAWS $a$ replaces $a$ tickets with one attempt and the same LVL and MIN, and it is bought in one transaction instead of $a$.
+A ticket with DRAWS $`a`$ replaces $`a`$ tickets with one attempt and the same LVL and MIN, and it is bought in one transaction instead of $`a`$.
 
-| | Ticket with DRAWS $a$ | $a$ tickets with one attempt |
+| | Ticket with DRAWS $`a`$ | $`a`$ tickets with one attempt |
 |---|---|---|
-| deposit | $D = a \cdot E \cdot (n+1) / (2 \cdot \text{RTP})$ | $D/a$ each |
-| payout | the sum of the payouts of $a$ attempts | the sum of the payouts of $a$ tickets |
-| smallest payout | $E \cdot a$ | $E$ each |
-| refund on canceling | $a \cdot \lfloor \text{RTP} \cdot D/a \rfloor$ | $\lfloor \text{RTP} \cdot D/a \rfloor$ each |
+| deposit | $`D = a \cdot E \cdot (n+1) / (2 \cdot \text{RTP})`$ | $`D/a`$ each |
+| payout | the sum of the payouts of $`a`$ attempts | the sum of the payouts of $`a`$ tickets |
+| smallest payout | $`E \cdot a`$ | $`E`$ each |
+| refund on canceling | $`a \cdot \lfloor \text{RTP} \cdot D/a \rfloor`$ | $`\lfloor \text{RTP} \cdot D/a \rfloor`$ each |
 | limit (section 5) | MAX of one attempt is no more than 12.5% of the supply | MAX of each ticket is no more than 12.5% of the supply |
 | secret and random number | shared by all attempts | separate for each ticket |
 | transfer, RESHAPE, cancel | of the whole ticket only | of each ticket separately |
-| network fee per action | once | $a$ times |
+| network fee per action | once | $`a`$ times |
 
 ---
 
@@ -268,11 +268,11 @@ A ticket with DRAWS $a$ replaces $a$ tickets with one attempt and the same LVL a
 
 ### 4.1. Buying a ticket
 
-At purchase the contract debits the deposit from the buyer's wallet but does not burn it: until mining these PRDX stay in the supply $P$. The RTP and the grace period at the moment of purchase are written into the ticket, and a later change by governance does not affect a bought ticket. The contract checks that the ticket's MIN is not below the smallest MIN and its LVL not above the largest LVL. Governance sets both values, and the contract checks them only at purchase.
+At purchase the contract debits the deposit from the buyer's wallet but does not burn it: until mining these PRDX stay in the supply $`P`$. The RTP and the grace period at the moment of purchase are written into the ticket, and a later change by governance does not affect a bought ticket. The contract checks that the ticket's MIN is not below the smallest MIN and its LVL not above the largest LVL. Governance sets both values, and the contract checks them only at purchase.
 
 Mining starts in the same transaction as the purchase or later, as a separate action.
 
-> **Example.** Bob buys a ticket: deposit 32 PRDX, LVL 3, one attempt. 32 PRDX are debited from Bob's wallet, and the supply $P$ does not change.
+> **Example.** Bob buys a ticket: deposit 32 PRDX, LVL 3, one attempt. 32 PRDX are debited from Bob's wallet, and the supply $`P`$ does not change.
 
 On TON a ticket is an NFT. On Solana a ticket is stored in a separate program account.
 
@@ -286,27 +286,27 @@ On TON a ticket is an NFT. On Solana a ticket is stored in a separate program ac
 | **Cancel** | the owner gets 87.5% of the deposit, the other 12.5% burns | get PRDX back without mining |
 | **Start mining** | the deposit burns except the smallest payout, mining starts (§4.3) | get the payout |
 
-RESHAPE sets a new LVL and MIN for a ticket while mining has not started. The contract accepts the new pair only if LVL is not above the old one, MIN is not below the old one, and the ticket's price with the new pair is no more than the deposit. If the price is below the deposit, the rest of the deposit burns when mining starts. The average payout equals 87.5% of the deposit if MIN is the largest allowed at the new LVL; the app offers that MIN. At LVL 2 the MAX of an attempt equals $1.17 \cdot D/a$, where $D/a$ is the deposit of one attempt, so after a RESHAPE to LVL 2 any ticket with $D/a$ of no more than about 10.7% of the supply passes the limit.
+RESHAPE sets a new LVL and MIN for a ticket while mining has not started. The contract accepts the new pair only if LVL is not above the old one, MIN is not below the old one, and the ticket's price with the new pair is no more than the deposit. If the price is below the deposit, the rest of the deposit burns when mining starts. The average payout equals 87.5% of the deposit if MIN is the largest allowed at the new LVL; the app offers that MIN. At LVL 2 the MAX of an attempt equals $`1.17 \cdot D/a`$, where $`D/a`$ is the deposit of one attempt, so after a RESHAPE to LVL 2 any ticket with $`D/a`$ of no more than about 10.7% of the supply passes the limit.
 
-Canceling is equivalent to mining a ticket with a single outcome. At $n = 1$ the deposit formula gives a single payout $\text{RTP} \cdot D$, that is, the same 87.5%. The refund equals $a \cdot \lfloor \text{RTP} \cdot D/a \rfloor$ smallest units of PRDX: the contract rounds down the refund of each of the $a$ attempts (§3.5).
+Canceling is equivalent to mining a ticket with a single outcome. At $`n = 1`$ the deposit formula gives a single payout $`\text{RTP} \cdot D`$, that is, the same 87.5%. The refund equals $`a \cdot \lfloor \text{RTP} \cdot D/a \rfloor`$ smallest units of PRDX: the contract rounds down the refund of each of the $`a`$ attempts (§3.5).
 
 > **Example.** Bob cancels a ticket with a 32 PRDX deposit. Bob gets 28 PRDX, and 4 PRDX burn.
 
 ### 4.3. Mining procedure
 
-1. The ticket's owner sends the hash of the secret. The contract checks the payout limit and burns the deposit except the smallest payout $E \cdot a$, which the owner gets in any outcome.
+1. The ticket's owner sends the hash of the secret. The contract checks the payout limit and burns the deposit except the smallest payout $`E \cdot a`$, which the owner gets in any outcome.
 2. A random number appears: on TON an oracle sends it, on Solana a drand round comes out (§9.1). From this moment the **grace period** runs: the time to reveal the secret. By default it lasts 24 hours, on the testnet 5 minutes.
 3. The owner reveals the secret. The contract computes the payout, gives it to the owner in full and issues the payout above the smallest one.
 
-The owner can close the ticket with the smallest payout $E \cdot a$ if the grace period has expired and the secret is not revealed. A ticket with a lost secret closes this way too. On TON the owner can close the ticket with the smallest payout earlier as well, while the oracle has not sent the random number. No new PRDX are issued on closing.
+The owner can close the ticket with the smallest payout $`E \cdot a`$ if the grace period has expired and the secret is not revealed. A ticket with a lost secret closes this way too. On TON the owner can close the ticket with the smallest payout earlier as well, while the oracle has not sent the random number. No new PRDX are issued on closing.
 
 However a ticket ends, the result for the supply is the same: the deposit is burned, and PRDX are issued to the owner. In mining the deposit burns at the start except the smallest payout (step 1), and the smallest payout stays in the supply until the ticket closes; on canceling the deposit burns at the moment of canceling.
 
 | The ticket ended | The owner gets |
 |---|---|
 | the secret revealed | the payout from the attempts' outcomes |
-| the grace period expired, the ticket closed | $E \cdot a$ |
-| on TON the random number did not come, the ticket closed | $E \cdot a$ |
+| the grace period expired, the ticket closed | $`E \cdot a`$ |
+| on TON the random number did not come, the ticket closed | $`E \cdot a`$ |
 | the ticket canceled | 87.5% of the deposit |
 
 ```mermaid
@@ -330,11 +330,11 @@ stateDiagram-v2
 
 Mining a ticket starts only if the MAX of one attempt is no more than 12.5% of the supply. A ticket over the limit can be bought, but mining it cannot start. The contract checks the limit at the start of mining:
 
-$$
+```math
 E \cdot 2^{\,n-1} \;\le\; 0.125 \cdot P
-$$
+```
 
-The number of attempts $a$ does not enter the condition. All attempts of a ticket have the same MIN and LVL, and the condition compares the MAX of one attempt with the limit, as for a ticket with one attempt (§3.5).
+The number of attempts $`a`$ does not enter the condition. All attempts of a ticket have the same MIN and LVL, and the condition compares the MAX of one attempt with the limit, as for a ticket with one attempt (§3.5).
 
 If the ticket passed the check, the contract gives the ticket's owner the payout in full, even if the supply changed by the end of mining.
 
@@ -353,7 +353,7 @@ If the ticket passed the check, the contract gives the ticket's owner the payout
 
 As the supply grows, the limit grows, and high levels become available again. A ticket over the limit can be kept until then or moved to an allowed level right away (RESHAPE, §4.2).
 
-The limit bounds the fall of the price after a large payout. A payout of one attempt of 12.5% of the supply multiplies the number of PRDX by 1.125 at the same reserve, and the PRDX price falls by about 11%: $1 - 1/1.125 \approx 0.11$. If large payouts come on several tickets or in several attempts of one ticket, the price falls more. A ticket with $a$ attempts pays up to $a$ limits if MAX comes in every attempt.
+The limit bounds the fall of the price after a large payout. A payout of one attempt of 12.5% of the supply multiplies the number of PRDX by 1.125 at the same reserve, and the PRDX price falls by about 11%: $`1 - 1/1.125 \approx 0.11`$. If large payouts come on several tickets or in several attempts of one ticket, the price falls more. A ticket with $`a`$ attempts pays up to $`a`$ limits if MAX comes in every attempt.
 
 If mining goes on, on average more PRDX again burn on the other tickets than are issued, and the price grows on average. In simulation, two years after a payout of 12.5% of the supply the price lags the run without it by 3% (figure 8a).
 
@@ -376,25 +376,25 @@ Only mining and canceling a ticket change the supply without changing the reserv
 >
 > Over three rounds Alice's 1,000 PRDX gained 3.1% in price on average.
 
-Let mining run on tickets with a sum of deposits $V$, let $P_0$ PRDX be issued at the start, and let there be no Mint and no Burn over that period: the supply changes only in mining, and miners deposit their yield again. $V$ is counted in PRDX, so it can exceed the supply. If exactly the average share burned on the tickets, then
+Let mining run on tickets with a sum of deposits $`V`$, let $`P_0`$ PRDX be issued at the start, and let there be no Mint and no Burn over that period: the supply changes only in mining, and miners deposit their yield again. $`V`$ is counted in PRDX, so it can exceed the supply. If exactly the average share burned on the tickets, then
 
-$$
+```math
 \frac{\text{price}}{\text{starting price}} = \frac{1}{1 - 0.125 \cdot V/P_0}
-$$
+```
 
 If the sum of deposits equals the starting supply, the price grows 1.14 times. If it is twice as large, 1.33 times.
 
-The number of participants is not in the formula: only the deposits and the supply matter. Mint and Burn change the supply, so in the general case growth is counted against the supply at each deposit: on average the price is multiplied by $\exp(0.125 \cdot \sum D/P)$. The same deposits raise the price 1.07 times at twice the supply and 1.33 times at half of it.
+The number of participants is not in the formula: only the deposits and the supply matter. Mint and Burn change the supply, so in the general case growth is counted against the supply at each deposit: on average the price is multiplied by $`\exp(0.125 \cdot \sum D/P)`$. The same deposits raise the price 1.07 times at twice the supply and 1.33 times at half of it.
 
 <p align="center"><img src="../figures/fig-price.png" width="820" alt="PRDX price growth"></p>
 
-*Figure 2. (a) The example of this section: 100,000 PRDX issued, no Mint or Burn, miners buy tickets with one attempt at 10 PRDX, 2,000 runs. The horizontal axis is the number of tickets, the top scale the sum of their deposits as a share of the starting supply. The corner of each panel gives the ticket's MIN and MAX. The line shows the median, the band covers 5–95% of the runs, the dashed line shows the formula. At every level the price grows with the number of tickets: after 20,000 tickets the sum of deposits is twice the supply, and the median is 1.33. The spread grows with the level: after 20,000 tickets the band of LVL 4 lies within 1.30–1.37, the band of LVL 12 spans 1.09 to 1.73. At a 10 PRDX ticket the limit admits levels up to LVL 14 at a supply of 100,000 PRDX and up to LVL 13 at the median supply after 20,000 tickets, 75,000 PRDX. (b) Each point is one year of the protocol with 10,000 participants. Miners buy 0.25 to 8 tickets a month. The dashed line shows the same formula for deposits that grow with the supply: $\exp(0.125 \cdot \sum D/P)$. 69% of years lie above the dashed line. The points to the right of and below the cloud are years with a large payout: the miner spends a share of the grown capital on tickets again, so the sum of deposits grows, while the price after a large payout is lower.*
+*Figure 2. (a) The example of this section: 100,000 PRDX issued, no Mint or Burn, miners buy tickets with one attempt at 10 PRDX, 2,000 runs. The horizontal axis is the number of tickets, the top scale the sum of their deposits as a share of the starting supply. The corner of each panel gives the ticket's MIN and MAX. The line shows the median, the band covers 5–95% of the runs, the dashed line shows the formula. At every level the price grows with the number of tickets: after 20,000 tickets the sum of deposits is twice the supply, and the median is 1.33. The spread grows with the level: after 20,000 tickets the band of LVL 4 lies within 1.30–1.37, the band of LVL 12 spans 1.09 to 1.73. At a 10 PRDX ticket the limit admits levels up to LVL 14 at a supply of 100,000 PRDX and up to LVL 13 at the median supply after 20,000 tickets, 75,000 PRDX. (b) Each point is one year of the protocol with 10,000 participants. Miners buy 0.25 to 8 tickets a month. The dashed line shows the same formula for deposits that grow with the supply: $`\exp(0.125 \cdot \sum D/P)`$. 69% of years lie above the dashed line. The points to the right of and below the cloud are years with a large payout: the miner spends a share of the grown capital on tickets again, so the sum of deposits grows, while the price after a large payout is lower.*
 
-The formula describes the average result. The actual result depends on each ticket's payout, and by the law of large numbers the more tickets, the closer the result to the formula. By the central limit theorem the share of deposits burned in a round of $N$ identical tickets stays within $\pm 2\sigma/\sqrt{N}$ of 12.5% in about 95% of cases, where $\sigma$ is the standard deviation of one ticket's payout as a share of the deposit (§3.4). At LVL $n$ the estimate holds when $N$ is greater than $2^{n}$: at a smaller $N$ the round's result depends on a rare large payout (figure 3). At LVL 4 already 1,000 tickets burn a share of deposits close to 12.5% (figure 3). In simulation the price fell over a year in 7.7% of years with 100 participants and in 1% of years with 100,000 participants (figure 3d).
+The formula describes the average result. The actual result depends on each ticket's payout, and by the law of large numbers the more tickets, the closer the result to the formula. By the central limit theorem the share of deposits burned in a round of $`N`$ identical tickets stays within $`\pm 2\sigma/\sqrt{N}`$ of 12.5% in about 95% of cases, where $`\sigma`$ is the standard deviation of one ticket's payout as a share of the deposit (§3.4). At LVL $`n`$ the estimate holds when $`N`$ is greater than $`2^{n}`$: at a smaller $`N`$ the round's result depends on a rare large payout (figure 3). At LVL 4 already 1,000 tickets burn a share of deposits close to 12.5% (figure 3). In simulation the price fell over a year in 7.7% of years with 100 participants and in 1% of years with 100,000 participants (figure 3d).
 
 <p align="center"><img src="../figures/fig-numbers.png" width="820" alt="Number of tickets and participants"></p>
 
-*Figure 3. (a–c) The panels show the share of deposits burned in a round of $N$ identical tickets. The axis runs to $10^{10}$ tickets. At LVL 4, 1,000 tickets are enough for the share to approach 12.5%. At LVL 24 the share approaches 12.5% only after $2^{24}$, about 17 million tickets: before that a rare large payout shifts the result strongly. The dashed line shows 12.5% ± 2σ/√N. (d) The panel shows the share of years in which the PRDX price fell, in a closed population of $N$ participants. Up to 3,000 participants a point is built from 600 years, at 10,000 and 30,000 from 300, at 100,000 from 100. The band shows the 95% Wilson interval.*
+*Figure 3. (a–c) The panels show the share of deposits burned in a round of $`N`$ identical tickets. The axis runs to $`10^{10}`$ tickets. At LVL 4, 1,000 tickets are enough for the share to approach 12.5%. At LVL 24 the share approaches 12.5% only after $`2^{24}`$, about 17 million tickets: before that a rare large payout shifts the result strongly. The dashed line shows 12.5% $`\pm 2\sigma/\sqrt{N}`$. (d) The panel shows the share of years in which the PRDX price fell, in a closed population of $`N`$ participants. Up to 3,000 participants a point is built from 600 years, at 10,000 and 30,000 from 300, at 100,000 from 100. The band shows the 95% Wilson interval.*
 
 ---
 
@@ -415,36 +415,36 @@ Alice and Bob follow two extreme strategies. A participant can choose any strate
 
 A participant's result in reserve coins, not counting the Mint and Burn fees, equals the product of two factors:
 
-$$
+```math
 \text{result} = \underbrace{\frac{\text{price at the end}}{\text{price at the start}}}_{\text{the same for everyone}} \times \underbrace{\frac{\text{PRDX at the end}}{\text{PRDX at the start}}}_{\text{each participant's own}}
-$$
+```
 
 The second factor depends on two of the participant's decisions.
 
-**How much PRDX to spend on tickets.** On each ticket a participant loses 12.5% of the deposit on average. Let a participant buy 24 tickets a year and spend on each ticket the same share of the PRDX they have at that moment. The sum of these shares over a year is called the turnover $T$.
+**How much PRDX to spend on tickets.** On each ticket a participant loses 12.5% of the deposit on average. Let a participant buy 24 tickets a year and spend on each ticket the same share of the PRDX they have at that moment. The sum of these shares over a year is called the turnover $`T`$.
 
-| Share of PRDX per ticket | Turnover $T$ | PRDX after a year, on average |
+| Share of PRDX per ticket | Turnover $`T`$ | PRDX after a year, on average |
 |---|---|---|
 | 1/24 | 1 | 88% of the starting amount |
 | 1/6 | 4 | 60% of the starting amount |
 
-For any number of tickets the amount of PRDX over a year is multiplied on average by about $e^{-0.125\,T}$.
+For any number of tickets the amount of PRDX over a year is multiplied on average by about $`e^{-0.125\,T}`$.
 
 **Which level to choose.** The level does not change the average result, but it changes the typical one. At a low level most participants' results are close to the average. At a high level most participants end the year below the average, and a few mine many times more (figure 4a).
 
 <p align="center"><img src="../figures/fig-how-much.png" width="820" alt="Turnover and ticket level"></p>
 
-*Figure 4. A participant buys 24 tickets with one attempt over a year. The horizontal axis shows the turnover $T$, the exact average factor is given above the bars. The panels show: (a) the median PRDX factor, (b) the chance to double PRDX over a year, %, (c) the chance to lose half of PRDX over a year, %. The chance to double PRDX is highest at LVL 8–12 with turnover 2. Low-level tickets almost never double, and on high-level tickets the large payout comes too rarely.*
+*Figure 4. A participant buys 24 tickets with one attempt over a year. The horizontal axis shows the turnover $`T`$, the exact average factor is given above the bars. The panels show: (a) the median PRDX factor, (b) the chance to double PRDX over a year, %, (c) the chance to lose half of PRDX over a year, %. The chance to double PRDX is highest at LVL 8–12 with turnover 2. Low-level tickets almost never double, and on high-level tickets the large payout comes too rarely.*
 
 ### 7.3. Risk profile
 
-In the simulation each participant has a risk profile ρ from 0 to 1. A participant with ρ = 0 acts like Alice, a participant with ρ = 1 like Bob. As ρ grows, a participant spends a larger share of PRDX on tickets, picks a higher level and fewer attempts per ticket. The participants are split into five classes: Alice (ρ = 0), three intermediate classes and Bob (ρ from 0.75 to 1).
+In the simulation each participant has a risk profile $`\rho`$ from 0 to 1. A participant with $`\rho = 0`$ acts like Alice, a participant with $`\rho = 1`$ like Bob. As $`\rho`$ grows, a participant spends a larger share of PRDX on tickets, picks a higher level and fewer attempts per ticket. The participants are split into five classes: Alice ($`\rho = 0`$), three intermediate classes and Bob ($`\rho`$ from 0.75 to 1).
 
 <p align="center"><img src="../figures/fig-classes.png" width="820" alt="Results by risk profile"></p>
 
-*Figure 5. Two participation models. The top row is the closed population: 20,000 participants, one year, 100 runs. The bottom row is the inflow model (section 8): participants arrive and leave, four years, 20 runs, ε = 0.8. (a, c) The panels show the gain of each class of participants and the Mint and Burn fees as shares of all coins put in. The bars sum to zero: holders receive what miners lose on average, minus the fees. (b, d) A participant's outcome is the capital at exit divided by the capital brought in. On the right are the share of the class with a loss and the share with ×10 or more.*
+*Figure 5. Two participation models. The top row is the closed population: 20,000 participants, one year, 100 runs. The bottom row is the inflow model (section 8): participants arrive and leave, four years, 20 runs, $`\varepsilon = 0.8`$. (a, c) The panels show the gain of each class of participants and the Mint and Burn fees as shares of all coins put in. The bars sum to zero: holders receive what miners lose on average, minus the fees. (b, d) A participant's outcome is the capital at exit divided by the capital brought in. On the right are the share of the class with a loss and the share with ×10 or more.*
 
-In the simulation holders and participants with a low ρ end most years with a profit. Participants with a high ρ lose part of their PRDX more often, but an outcome of ×10 or more occurs only in the classes with ρ above 0.25. In the inflow model holders also gain, and all classes of miners lose on average, including the class with ρ up to 0.25. A miner in this model leaves when less than 20% of what they brought remains, so on panel (d) the miners' outcomes start at about ×0.2. In both models the largest outcomes of single miners exceed ×1000.
+In the simulation holders and participants with a low $`\rho`$ end most years with a profit. Participants with a high $`\rho`$ lose part of their PRDX more often, but an outcome of ×10 or more occurs only in the classes with $`\rho`$ above 0.25. In the inflow model holders also gain, and all classes of miners lose on average, including the class with $`\rho`$ up to 0.25. A miner in this model leaves when less than 20% of what they brought remains, so on panel (d) the miners' outcomes start at about ×0.2. In both models the largest outcomes of single miners exceed ×1000.
 
 ---
 
@@ -468,37 +468,37 @@ flowchart LR
 
 The holder's annual price growth is approximately
 
-$$
+```math
 y \approx 0.125 \cdot \frac{V}{G}
-$$
+```
 
-where $V$ is the sum of deposits over a year in reserve coins at the price at the time the tickets are bought, and $G$ is the reserve. If holders leave and miners stay, the same 12.5% is shared by a smaller reserve, and the price grows faster. Then holders come back more often. If there are too many holders, the price growth per holder slows down, and some holders leave.
+where $`V`$ is the sum of deposits over a year in reserve coins at the price at the time the tickets are bought, and $`G`$ is the reserve. If holders leave and miners stay, the same 12.5% is shared by a smaller reserve, and the price grows faster. Then holders come back more often. If there are too many holders, the price growth per holder slows down, and some holders leave.
 
 ### 8.2. Model assumptions
 
 | Parameter | Assumption |
 |---|---|
-| holders | come the more often, the more $y$ exceeds the alternative yield $r^*$ (5% a year in the base case) |
-| miners | come the more often, the larger the largest payout; the sensitivity ε shows by how many percent more miners come when the largest payout grows by 1% |
-| miner's strategy | every miner has their own risk profile ρ (§7.3): it sets the share of PRDX spent on tickets, the level and the number of attempts |
-| exit | holders leave the less often, the more $y$ exceeds $r^*$; a miner leaves when less than 20% of what they brought remains |
+| holders | come the more often, the more $`y`$ exceeds the alternative yield $`r^*`$ (5% a year in the base case) |
+| miners | come the more often, the larger the largest payout; the sensitivity $`\varepsilon`$ shows by how many percent more miners come when the largest payout grows by 1% |
+| miner's strategy | every miner has their own risk profile $`\rho`$ (§7.3): it sets the share of PRDX spent on tickets, the level and the number of attempts |
+| exit | holders leave the less often, the more $`y`$ exceeds $`r^*`$; a miner leaves when less than 20% of what they brought remains |
 | start | 10,000 participants |
 
-If ε is below 1, the reserve grows to a stable size. If ε is above 1, the reserve grows while there are new participants in the market.
+If $`\varepsilon`$ is below 1, the reserve grows to a stable size. If $`\varepsilon`$ is above 1, the reserve grows while there are new participants in the market.
 
 ### 8.3. Participation simulation results
 
 <p align="center"><img src="../figures/fig-loop.png" width="820" alt="Participation"></p>
 
-*Figure 6. The simulation covers four years of the protocol, 20 runs. The panels show: (a) the reserve, (b) the PRDX price, (c) the holder's annual price growth $y$, (d) the share of miners. The grey line shows a model without feedback: participants come at a constant rate. The larger ε, the darker the line. The line shows the median, the band the interquartile range. In the model without feedback the reserve grows 1.55 times and the price 2.2 times, because 12.5% of deposits is shared by a small reserve. With feedback at ε = 0.5 the reserve grows 5.0 times and the price 1.66 times. At ε = 0.8 the reserve grows 8.9 times and the price 1.92 times. At ε = 1.2 the reserve grows 31 times (interquartile range 27–38) and the price 2.7 times. The dashed line in panel (c) marks the alternative yield $r^*$ = 5%. In the runs with feedback, 240 years, the price fell over a year twice, both times at ε = 0.5.*
+*Figure 6. The simulation covers four years of the protocol, 20 runs. The panels show: (a) the reserve, (b) the PRDX price, (c) the holder's annual price growth $`y`$, (d) the share of miners. The grey line shows a model without feedback: participants come at a constant rate. The larger $`\varepsilon`$, the darker the line. The line shows the median, the band the interquartile range. In the model without feedback the reserve grows 1.55 times and the price 2.2 times, because 12.5% of deposits is shared by a small reserve. With feedback at $`\varepsilon = 0.5`$ the reserve grows 5.0 times and the price 1.66 times. At $`\varepsilon = 0.8`$ the reserve grows 8.9 times and the price 1.92 times. At $`\varepsilon = 1.2`$ the reserve grows 31 times (interquartile range 27–38) and the price 2.7 times. The dashed line in panel (c) marks the alternative yield $`r^*`$ = 5%. In the runs with feedback, 240 years, the price fell over a year twice, both times at $`\varepsilon = 0.5`$.*
 
 <p align="center"><img src="../figures/fig-phase.png" width="820" alt="Reserve and holders' yield"></p>
 
-*Figure 7. Each cell shows the median of eight runs. (a) The panel shows how many times the reserve grew over four years: from ×1.1 to ×22. The reserve grows faster at a larger ε and a smaller alternative yield $r^*$. (b) The panel shows how much the price growth exceeds the alternative yield in the last year, in percentage points. At ε = 1.25 and ε = 1.5 the price growth exceeds the alternative yield for any $r^*$ in the range, at smaller ε for $r^*$ up to 10%. The frame marks ε = 1.*
+*Figure 7. Each cell shows the median of eight runs. (a) The panel shows how many times the reserve grew over four years: from ×1.1 to ×22. The reserve grows faster at a larger $`\varepsilon`$ and a smaller alternative yield $`r^*`$. (b) The panel shows how much the price growth exceeds the alternative yield in the last year, in percentage points. At $`\varepsilon = 1.25`$ and $`\varepsilon = 1.5`$ the price growth exceeds the alternative yield for any $`r^*`$ in the range, at smaller $`\varepsilon`$ for $`r^*`$ up to 10%. The frame marks $`\varepsilon = 1`$.*
 
 <p align="center"><img src="../figures/fig-shock-and-cap.png" width="820" alt="A large payout, holders leaving and the limit"></p>
 
-*Figure 8. Each run with an event is compared with the same run without it, ε = 0.8. (a) On day 730 one miner mines 12.5% of the supply. The price falls by about 11% and by the end of the fourth year lags the run without the event by 3%. The median reserve falls to 33% of the run without the event: after the price fall the holder's annual growth drops, and in the model holders leave more often and come less often (section 8). By the end of the fourth year the reserve is 12% larger than in the run without the event. (b, c) On day 730 half of the holders leave. The price growth for the remaining holders speeds up; within half a year the number of holders returns to 84% of the run without the event (median), and by the end of the fourth year to 98%. (d) The panel shows the reserve after four years at different payout limits, 20 runs per limit. The largest one-day price fall, the median of the runs, is given above the bars. At a 12.5% limit the reserve grows 10 times, and the largest one-day fall is 9%.*
+*Figure 8. Each run with an event is compared with the same run without it, $`\varepsilon = 0.8`$. (a) On day 730 one miner mines 12.5% of the supply. The price falls by about 11% and by the end of the fourth year lags the run without the event by 3%. The median reserve falls to 33% of the run without the event: after the price fall the holder's annual growth drops, and in the model holders leave more often and come less often (section 8). By the end of the fourth year the reserve is 12% larger than in the run without the event. (b, c) On day 730 half of the holders leave. The price growth for the remaining holders speeds up; within half a year the number of holders returns to 84% of the run without the event (median), and by the end of the fourth year to 98%. (d) The panel shows the reserve after four years at different payout limits, 20 runs per limit. The largest one-day price fall, the median of the runs, is given above the bars. At a 12.5% limit the reserve grows 10 times, and the largest one-day fall is 9%.*
 
 In figure 8d a 1.6% limit gives a one-day fall of 1%, but the reserve barely grows. A 25% limit gives 21 times reserve growth and an 11% fall.
 
@@ -508,15 +508,15 @@ In figure 8d a 1.6% limit gives a one-day fall of 1%, but the reserve barely gro
 
 The mining result depends on two numbers: the miner's secret and a random number. On TON the random number is sent by an oracle, on Solana it is published by the drand network.
 
-$$
+```math
 \text{result} = \text{miner's secret} \oplus \text{random number}
-$$
+```
 
 Mining follows a commit-reveal scheme:
 
 1. **The miner commits the secret.** When starting mining, the miner sends the SHA-256 hash of the secret. After that the miner cannot replace the secret: finding another secret with the same hash is infeasible in practice.
 2. **A random number appears.** On TON the oracle's key is written into the ticket at the start of mining, and the contract accepts only a number signed with this key. On Solana the number of a drand round and the key of the drand network are written into the ticket at the start of mining (§9.1).
-3. **The miner reveals the secret.** The contract checks the secret against the hash and computes the result. For each attempt the contract takes 32 bits of the result. The number of consecutive ones starting from the lowest bit, taken up to $n-1$, equals the number of tosses before the first heads.
+3. **The miner reveals the secret.** The contract checks the secret against the hash and computes the result. For each attempt the contract takes 32 bits of the result. The number of consecutive ones starting from the lowest bit, taken up to $`n-1`$, equals the number of tosses before the first heads.
 
 ```mermaid
 sequenceDiagram
@@ -539,7 +539,7 @@ drand is a network of independent members that publishes the random number of a 
 
 1. **Start of mining.** The program writes into the ticket the round that comes out no earlier than the deployment's delay from now (60 seconds on the testnet), and the key of the drand network. The miner's secret is already committed, and the signature of that round does not exist yet.
 2. **Reveal.** The miner sends the secret together with the round's signature. The program checks the signature with the key written into the ticket and derives from it the ticket's random number, bound to the ticket's number. The program rejects the signature of another round or one under another key.
-3. **The grace period** runs from the time the round comes out. After it the ticket can be closed with the smallest payout $E \cdot a$.
+3. **The grace period** runs from the time the round comes out. After it the ticket can be closed with the smallest payout $`E \cdot a`$.
 
 Nobody delivers the number: the drand network publishes the round's signature, and the miner attaches it to the reveal, so there is no delivery fee.
 
@@ -686,7 +686,7 @@ Yes. On average a ticket returns 87.5% of its price, so the miner loses 12.5%. W
 
 ### 13.12. How large can one ticket's payout be?
 
-Mining with a ticket starts only if the largest payout of one attempt (MAX) is at most 12.5% of all PRDX issued (the limit, section 5). That is up to a ninth of the reserve in coins at the price after the payout is issued. The number of attempts does not affect the limit, so a ticket with $a$ attempts pays up to $a$ limits if MAX comes in every attempt. The limit grows with the number of PRDX issued: **the more PRDX are issued, the larger the payout one ticket can bring**.
+Mining with a ticket starts only if the largest payout of one attempt (MAX) is at most 12.5% of all PRDX issued (the limit, section 5). That is up to a ninth of the reserve in coins at the price after the payout is issued. The number of attempts does not affect the limit, so a ticket with $`a`$ attempts pays up to $`a`$ limits if MAX comes in every attempt. The limit grows with the number of PRDX issued: **the more PRDX are issued, the larger the payout one ticket can bring**.
 
 The limit protects those who hold PRDX: a payout of one attempt at the limit lowers the PRDX price by about 11%. A ticket over the limit can be bought now and mined when there are more PRDX, or its level can be lowered (RESHAPE).
 
@@ -729,12 +729,12 @@ A USDT reserve carries an outside risk: USDT is issued by Tether, which can free
 | **Burn** | burning PRDX and paying out coins from the reserve at the current price G/P |
 | **Ticket** | the right to mine PRDX, bought for PRDX; an NFT on TON |
 | **Mining** | issuing PRDX on a ticket: the contract burns the deposit except the smallest payout and issues the rest of the payout |
-| **Attempt** | a series of coin tosses until the first heads, no more than $n-1$ tosses; a ticket has 1 to 8 attempts |
+| **Attempt** | a series of coin tosses until the first heads, no more than $`n-1`$ tosses; a ticket has 1 to 8 attempts |
 | **Payout** | the PRDX the miner gets on a ticket |
 | **Deposit, D** | the ticket price in PRDX |
 | **LVL, n** | the number of possible outcomes of an attempt |
 | **MIN, E** | the smallest payout of one attempt |
-| **MAX** | the largest payout of one attempt, $E \cdot 2^{n-1}$ |
+| **MAX** | the largest payout of one attempt, $`E \cdot 2^{\,n-1}`$ |
 | **DRAWS, a** | the number of attempts on a ticket |
 | **RTP** | the average payout as a share of the deposit, 87.5% |
 | **Spread** | how far a single ticket's payout lies from the average; set by the level and the number of attempts |
