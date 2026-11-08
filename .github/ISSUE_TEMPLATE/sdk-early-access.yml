@@ -1,0 +1,25 @@
+name: SDK early access
+description: Early access to the PARADOX (PRDX) SDK for TON and Solana before it opens to everyone.
+title: "SDK early access"
+labels: ["sdk-access"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The PARADOX SDK for JavaScript and TypeScript is in early access. It opens to everyone under the
+        MIT license in the second quarter of 2027. Until then it is in a private repository, and access to it is given by these rules.
+
+        **Rules**
+
+        1. Star [prdx-docs](https://github.com/prdx-admin/prdx-docs) and [prdx-sim](https://github.com/prdx-admin/prdx-sim), then press **Create**. Your GitHub account is your application.
+        2. One application per account. A second open application from the same account is closed.
+        3. A check runs within a minute of submitting and writes your place in the queue in a comment. The place counts from the moment the check finds both stars.
+        4. If a star is missing, the issue gets the `needs-star` label. Star both repositories and comment `/check`: the application joins the end of the queue.
+        5. Invitations go out in waves, in queue order. Every wave is 5 applicants. A wave is invited as soon as the queue holds all its applicants; stars are checked again before that.
+        6. An invitation gives read access to the private SDK repository. Accept it at the link in the comment within 7 days.
+        7. Access stays until the SDK opens to everyone in the second quarter of 2027.
+  - type: input
+    id: from
+    attributes:
+      label: Source
+      description: The link you came from fills this in. You can leave it as it is.

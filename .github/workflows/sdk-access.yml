@@ -1,0 +1,50 @@
+name: sdk-access
+
+# Checks an SDK early access application: the stars on prdx-docs and prdx-sim, a second application
+# from the same account, the place in the queue. Then invites every wave that the queue fills. Runs
+# when an application is opened or reopened and when its author comments /check; by hand, for the
+# application number given, without a comment in it. Needs the
+# EARLY_TOKEN secret (a token with admin rights on the private SDK repository) and the EARLY_REPO
+# variable (owner/name of that repository). Runs are not serialized: a concurrency group keeps only
+# one pending run and cancels the others, and every step of a check can repeat without harm.
+on:
+  issues:
+    types: [opened, reopened]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: The application issue number to check
+        required: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    if: github.event.issue.pull_request == null
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/github-script@v7
+        env:
+          EARLY_TOKEN: ${{ secrets.EARLY_TOKEN }}
+          EARLY_REPO: ${{ vars.EARLY_REPO }}
+          ISSUE: ${{ inputs.issue }}
+        with:
+          script: |
+            const { check } = require('./.github/scripts/sdk-access.js');
+            const { EARLY_TOKEN, EARLY_REPO, ISSUE } = process.env;
+            const early = EARLY_TOKEN && EARLY_REPO ? new github.constructor({ auth: EARLY_TOKEN }) : null;
+            // the applicants' stars: the workflow's token, then EARLY_TOKEN
+            const readers = [github, early];
+            let ctx = context;
+            if (context.eventName === 'workflow_dispatch') {
+              const { data } = await github.rest.issues.get({ ...context.repo, issue_number: Number(ISSUE) });
+              ctx = { repo: context.repo, eventName: 'issues', payload: { issue: data } };
+            }
+            await check({ github, context: ctx, core, early, earlyRepo: EARLY_REPO, readers });

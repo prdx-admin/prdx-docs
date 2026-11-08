@@ -45,7 +45,7 @@ PARADOX — протокол в блокчейнах TON и Solana. Его то�
 7. [Стратегии Алисы и Боба](#7-стратегии-алисы-и-боба)
 8. [Модель притока участников](#8-модель-притока-участников)
 9. [Случайность майнинга](#9-случайность-майнинга)
-10. [Контракты и параметры](#10-контракты-и-параметры)
+10. [Контракты, параметры и SDK](#10-контракты-параметры-и-sdk)
 11. [Как попробовать протокол](#11-как-попробовать-протокол)
 12. [Риски](#12-риски)
 13. [Частые вопросы](#13-частые-вопросы)
@@ -545,7 +545,7 @@ drand — сеть независимых участников, которая �
 
 ---
 
-## 10. Контракты и параметры
+## 10. Контракты, параметры и SDK
 
 ### 10.1. Параметры протокола
 
@@ -583,6 +583,10 @@ drand — сеть независимых участников, которая �
 | пул с резервом в SOL | [`9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C`](https://explorer.solana.com/address/9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C?cluster=devnet) |
 | токен PRDX этого пула | [`3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN`](https://explorer.solana.com/address/3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN?cluster=devnet) |
 
+### 10.4. SDK для JavaScript
+
+Для создания приложений на базе протокола PARADOX доступен SDK для JavaScript. Чтобы получить ранний доступ, заполните [форму на GitHub](https://github.com/prdx-admin/prdx-docs/issues/new?template=sdk-early-access.yml&from=docs). SDK распространяется по лицензии MIT.
+
 ---
 
 ## 11. Как попробовать протокол
@@ -604,6 +608,7 @@ drand — сеть независимых участников, которая �
 | Канал на английском | [t.me/prdxcoinproject](https://t.me/prdxcoinproject) | новости протокола на английском |
 | Чат | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | вопросы и обсуждение |
 | X | [x.com/prdxdev](https://x.com/prdxdev) | посты разработчика |
+| SDK | [п. 10.4](#104-sdk-для-javascript) | SDK для JavaScript, в раннем доступе |
 | Симулятор | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | модель протокола, из которой построены рисунки документа |
 | Исходный текст документации | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | этот документ в Markdown |
 

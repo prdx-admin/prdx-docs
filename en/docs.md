@@ -45,7 +45,7 @@ Here is the paradox: the more PRDX is spent on tickets, the faster every PRDX ga
 7. [Alice's and Bob's strategies](#7-alices-and-bobs-strategies)
 8. [Participation model](#8-participation-model)
 9. [Mining randomness](#9-mining-randomness)
-10. [Contracts and parameters](#10-contracts-and-parameters)
+10. [Contracts, parameters and SDK](#10-contracts-parameters-and-sdk)
 11. [How to try the protocol](#11-how-to-try-the-protocol)
 12. [Risks](#12-risks)
 13. [Frequently asked questions](#13-frequently-asked-questions)
@@ -545,7 +545,7 @@ Nobody delivers the number: the drand network publishes the round's signature, a
 
 ---
 
-## 10. Contracts and parameters
+## 10. Contracts, parameters and SDK
 
 ### 10.1. Protocol parameters
 
@@ -583,6 +583,10 @@ The Solana program works by the same rules. On Solana a ticket is transferred wi
 | pool with the SOL reserve | [`9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C`](https://explorer.solana.com/address/9jqvg7XBPRxcsjBkBPGDp7uY16bcpFTykmiec9JTzE3C?cluster=devnet) |
 | this pool's PRDX token | [`3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN`](https://explorer.solana.com/address/3RvcU914hXuNjxSLyMqSjLipYWDz1ote538wsdhqTnBN?cluster=devnet) |
 
+### 10.4. SDK for JavaScript
+
+An SDK for JavaScript is available for building apps on the PARADOX protocol. To get early access, fill in the [form on GitHub](https://github.com/prdx-admin/prdx-docs/issues/new?template=sdk-early-access.yml&from=docs). The SDK is distributed under the MIT license.
+
 ---
 
 ## 11. How to try the protocol
@@ -604,6 +608,7 @@ The protocol's links:
 | Channel in Russian | [t.me/prdxproject](https://t.me/prdxproject) | protocol news in Russian |
 | Chat | [t.me/prdxcoinchat](https://t.me/prdxcoinchat) | questions and discussion |
 | X | [x.com/prdxdev](https://x.com/prdxdev) | the developer's posts |
+| SDK | [§10.4](#104-sdk-for-javascript) | the SDK for JavaScript, in early access |
 | Simulator | [prdx-sim](https://github.com/prdx-admin/prdx-sim) | the protocol model the document's figures are built from |
 | Documentation source | [prdx-docs](https://github.com/prdx-admin/prdx-docs) | this document in Markdown |
 
