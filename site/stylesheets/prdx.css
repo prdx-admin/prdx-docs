@@ -1,0 +1,74 @@
+/* PRDX palette: the tones of prdxcoin.com and the app (prdx-site src/style.css, prdx-front
+   src/styles.css) — burn, mint and mine on near-black, raised surfaces in the app's gray. The
+   documentation adds no tones, gradients or radii of its own. */
+
+:root {
+  --prdx-cyan: #49e3eb;
+  --prdx-green: #5eeaa0;
+  --prdx-violet: #ada0fe;
+  --prdx-ink: #0b0d0d;
+  /* raised surface (table heads, code) and the hairline edge of the app */
+  --prdx-gray: #1a1e1f;
+  --prdx-edge: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 180;
+  --md-default-bg-color: var(--prdx-ink);
+  --md-default-bg-color--light: var(--prdx-gray);
+  --md-code-bg-color: var(--prdx-gray);
+  --md-primary-fg-color: var(--prdx-ink);
+  --md-primary-fg-color--light: var(--prdx-gray);
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #f2f7f7;
+  --md-accent-fg-color: var(--prdx-green);
+  --md-typeset-a-color: var(--prdx-cyan);
+  --md-footer-bg-color: #070909;
+  --md-footer-bg-color--dark: #000;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--prdx-ink);
+  --md-primary-fg-color--light: var(--prdx-gray);
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #f2f7f7;
+  --md-accent-fg-color: #0d9a5e;
+  --md-typeset-a-color: #08848b;
+}
+
+/* the header stands on the ground with the app's hairline edge; it is dark in both schemes */
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--prdx-edge);
+}
+
+.md-typeset h1 {
+  font-weight: 800;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  padding-top: 0.4em;
+}
+
+.md-header__button.md-logo img {
+  height: 1.8rem;
+}
+
+.md-typeset img {
+  /* the smallest radius of the site scale (prdx-site --radius-sm) */
+  border-radius: 12px;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-default-bg-color--light);
+}
+
+.md-typeset .arithmatex {
+  overflow-x: auto;
+}
+
+.md-typeset h1 .headerlink {
+  display: none;
+}

@@ -1,0 +1,36 @@
+name: docs
+
+# Builds the site on every push to main and deploys it to Cloudflare Pages (project prdx-docs,
+# docs.prdxcoin.com) when the repository has the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID
+# secrets; without them the job only checks that the site builds.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs
+  cancel-in-progress: true
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install mkdocs==1.6.1 mkdocs-material==9.7.7 pymdown-extensions==12.3
+      - run: site/build.sh
+      - if: env.CF_TOKEN != '' && github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy _site --project-name prdx-docs --branch main
