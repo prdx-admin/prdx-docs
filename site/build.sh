@@ -27,7 +27,9 @@ fi
 for l in en ru; do
   mkdocs build --strict -f site/$l.yml
 done
-# корень: выбор языка, robots.txt, общая карта сайта, ключ IndexNow и llms.txt
+# корень: запасная страница выбора языка, robots.txt, общая карта сайта, ключ IndexNow и llms.txt.
+# Адрес «/» до этой страницы не доходит: правила переадресации зоны prdxcoin.com в Cloudflare отдают
+# 302 на /ru/ браузерам с ru, uk, be или kk в Accept-Language и 301 на /en/ всем остальным
 cp site/root/* _site/
 # llms-full.txt: оба текста документации в Markdown для языковых моделей
 cat en/docs.md ru/docs.md > _site/llms-full.txt

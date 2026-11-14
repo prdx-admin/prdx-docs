@@ -7,10 +7,11 @@
 <meta name="description" content="The PRDX token on the TON and Solana blockchains with a full reserve. Those who seek risk spend PRDX on mining tickets by the rules of the St. Petersburg game, those who avoid it hold PRDX. No intermediary takes the payment for risk: it burns, and the open risk of some adds up to a steady average growth of the token.">
 <link rel="alternate" hreflang="en" href="https://docs.prdxcoin.com/en/">
 <link rel="alternate" hreflang="ru" href="https://docs.prdxcoin.com/ru/">
-<link rel="alternate" hreflang="x-default" href="https://docs.prdxcoin.com/">
+<link rel="alternate" hreflang="x-default" href="https://docs.prdxcoin.com/en/">
 <link rel="icon" href="/en/assets/favicon.ico">
 <script>
-  // Russian-speaking browsers open /ru/, the rest /en/.
+  // Fallback only: Cloudflare redirect rules answer "/" before this page (302 to /ru/ for
+  // ru, uk, be, kk in Accept-Language, 301 to /en/ otherwise). Here the same choice runs in the browser.
   var langs = navigator.languages || [navigator.language || ""];
   var ru = langs.some(function (l) { return /^(ru|uk|be|kk)\b/i.test(l); });
   location.replace((ru ? "/ru/" : "/en/") + location.hash);
